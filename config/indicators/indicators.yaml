@@ -1,0 +1,19 @@
+indicators:
+  - id: usdthb
+    series: [bot_usdthb_interbank]
+    meaning: THB per USD; higher means THB depreciation
+  - id: regional_fx
+    series: [bot_usdthb_bank_average, bot_eurthb_bank_average, bot_jpythb_bank_average]
+    meaning: Compare only the same commercial-bank-average rate type
+  - id: us_interest_rate
+    series: [fred_fedfunds, fred_dgs2]
+    meaning: Percent per annum; policy and market yield differ
+  - id: us_inflation
+    series: [fred_cpiaucsl]
+    meaning: Monthly price index; release date needed for daily alignment
+  - id: broad_usd
+    series: [fred_dtwexbgs]
+    meaning: Broad USD index; not USD/THB
+  - id: risk_sentiment
+    series: [fred_vixcls]
+    meaning: VIX is an association proxy, not a causal driver
