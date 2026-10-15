@@ -1,0 +1,12 @@
+fx:
+  key: [source_id, series_id, base_ccy, quote_ccy, rate_type, observation_date]
+  required: [source_id, series_id, base_ccy, quote_ccy, rate_type, observation_date, retrieved_at, rate, unit, frequency]
+  rate: positive_finite
+  pair: distinct_uppercase_iso_4217_codes
+  invalid_action: quarantine_with_reason
+macro:
+  key: [source_id, series_id, observation_date, vintage_date]
+  required: [source_id, series_id, observation_date, retrieved_at, unit, frequency]
+  missing_value: preserve_as_null
+  release_rule: release_date_not_after_retrieval_date
+  invalid_action: quarantine_with_reason
