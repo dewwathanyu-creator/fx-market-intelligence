@@ -45,7 +45,7 @@ def test_bot_uses_authorization_header() -> None:
 
     with httpx.Client(transport=httpx.MockTransport(respond)) as http:
         result = BotClient("test-key", http=http).fetch(
-            "https://gateway.api.bot.or.th/Stat-ReferenceRate/v2/DAILY_REF_RATE/get",
+            "https://gateway.api.bot.or.th/Stat-ReferenceRate/v2/DAILY_REF_RATE/",
             {"start_period": "2026-01-01", "end_period": "2026-01-31"},
         )
     assert result == {"result": {"data": []}}
