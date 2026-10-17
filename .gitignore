@@ -17,5 +17,7 @@ build/
 *.duckdb.wal
 data/raw/
 data/processed/
+dashboard/powerbi/data/
+dashboard/powerbi/**/.pbi/
 reports/generated/
 notebooks/.ipynb_checkpoints/

@@ -1,0 +1,110 @@
+table tbl_fact_fx_rates
+	lineageTag: 169fee86-967e-4e9e-8dcc-d2ca1600e0df
+
+	column source_id
+		dataType: string
+		lineageTag: eb340fe9-9a04-4c5c-a35d-4a2718e008b8
+		summarizeBy: none
+		sourceColumn: source_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column series_id
+		dataType: string
+		lineageTag: fa284120-d8f7-4b9a-a943-e1157f63a598
+		summarizeBy: none
+		sourceColumn: series_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pair_id
+		dataType: string
+		lineageTag: 6b472f8c-db07-48a2-97a7-f327e9b4f6b3
+		summarizeBy: none
+		sourceColumn: pair_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column observation_date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: b9fde86d-ec83-4c78-8414-1244181f4e3c
+		summarizeBy: none
+		sourceColumn: observation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate_type
+		dataType: string
+		lineageTag: a00573ae-1462-41bc-9016-72d37cd62522
+		summarizeBy: none
+		sourceColumn: rate_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate
+		dataType: double
+		lineageTag: 7ce51195-b18a-456a-8c2d-eb257cdcf3b9
+		summarizeBy: sum
+		sourceColumn: rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit
+		dataType: string
+		lineageTag: d1ec33d8-43b7-4c2d-a0bb-4f20bb19da22
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column frequency
+		dataType: string
+		lineageTag: 380c92af-956d-4635-97c2-d702eb572453
+		summarizeBy: none
+		sourceColumn: frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column retrieved_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fdad97b6-5812-450f-8f61-36caea514103
+		summarizeBy: none
+		sourceColumn: retrieved_at
+
+		variation Variation
+			isDefault
+			relationship: b0614c56-8449-40ed-911a-7f93669e92e1
+			defaultHierarchy: LocalDateTable_507603f3-7ea2-4560-a03f-2d0b67e5fc1e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	measure 'Latest FX Rate' = IF(HASONEVALUE(tbl_fact_fx_rates[source_id]) && HASONEVALUE(tbl_fact_fx_rates[pair_id]) && HASONEVALUE(tbl_fact_fx_rates[rate_type]), CALCULATE(MAX(tbl_fact_fx_rates[rate]), tbl_fact_fx_rates[observation_date] = MAX(tbl_fact_fx_rates[observation_date])))
+		formatString: 0.0000
+
+	measure 'Latest Observation Date' = IF(HASONEVALUE(tbl_fact_fx_rates[source_id]) && HASONEVALUE(tbl_fact_fx_rates[pair_id]) && HASONEVALUE(tbl_fact_fx_rates[rate_type]), MAX(tbl_fact_fx_rates[observation_date]))
+		formatString: yyyy-MM-dd
+
+	measure 'Latest Simple Return' = IF(HASONEVALUE(tbl_fact_fx_metrics[source_id]) && HASONEVALUE(tbl_fact_fx_metrics[pair_id]) && HASONEVALUE(tbl_fact_fx_metrics[rate_type]), CALCULATE(MAX(tbl_fact_fx_metrics[simple_return]), tbl_fact_fx_metrics[observation_date] = MAX(tbl_fact_fx_metrics[observation_date])))
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Latest 20D Volatility' = IF(HASONEVALUE(tbl_fact_fx_metrics[source_id]) && HASONEVALUE(tbl_fact_fx_metrics[pair_id]) && HASONEVALUE(tbl_fact_fx_metrics[rate_type]), CALCULATE(MAX(tbl_fact_fx_metrics[volatility_20]), tbl_fact_fx_metrics[observation_date] = MAX(tbl_fact_fx_metrics[observation_date])))
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Last Refresh' = MAX(tbl_refresh_metadata[last_success_at])
+		formatString: yyyy-MM-dd HH:mm
+
+	partition tbl_fact_fx_rates = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\acer\Desktop\FX Market Intelligence Dashboard\dashboard\powerbi\data\fx_model.xlsx"), null, true),
+				    tbl_fact_fx_rates_Table = Source{[Item="tbl_fact_fx_rates",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(tbl_fact_fx_rates_Table,{{"source_id", type text}, {"series_id", type text}, {"pair_id", type text}, {"observation_date", type date}, {"rate_type", type text}, {"rate", type number}, {"unit", type text}, {"frequency", type text}, {"retrieved_at", type datetimezone}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

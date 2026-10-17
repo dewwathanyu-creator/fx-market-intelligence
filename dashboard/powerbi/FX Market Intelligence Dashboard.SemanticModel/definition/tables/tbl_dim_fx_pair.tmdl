@@ -1,0 +1,38 @@
+table tbl_dim_fx_pair
+	lineageTag: b8ed0cb0-2209-40a0-a827-0a993accadc2
+
+	column pair_id
+		dataType: string
+		lineageTag: 5f3451cc-c187-4343-9255-554d7f0822e2
+		summarizeBy: none
+		sourceColumn: pair_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column base_ccy
+		dataType: string
+		lineageTag: 7457622f-9fdd-490e-af9c-fb8162d747b7
+		summarizeBy: none
+		sourceColumn: base_ccy
+
+		annotation SummarizationSetBy = Automatic
+
+	column quote_ccy
+		dataType: string
+		lineageTag: d8a6a98c-3fce-4a92-9f70-2c9a015507bb
+		summarizeBy: none
+		sourceColumn: quote_ccy
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_dim_fx_pair = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\acer\Desktop\FX Market Intelligence Dashboard\dashboard\powerbi\data\fx_model.xlsx"), null, true),
+				    tbl_dim_fx_pair_Table = Source{[Item="tbl_dim_fx_pair",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(tbl_dim_fx_pair_Table,{{"pair_id", type text}, {"base_ccy", type text}, {"quote_ccy", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,30 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: th-TH
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["tbl_dim_date","tbl_dim_currency","tbl_dim_fx_pair","tbl_dim_indicator","tbl_dim_source","tbl_fact_fx_metrics","tbl_fact_fx_rates","tbl_refresh_metadata","tbl_fact_macro"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table tbl_dim_date
+ref table tbl_dim_currency
+ref table tbl_dim_fx_pair
+ref table tbl_dim_indicator
+ref table tbl_dim_source
+ref table tbl_fact_fx_metrics
+ref table tbl_fact_fx_rates
+ref table DateTableTemplate_0f7d1131-1b82-4aa0-b205-cbbe6572a651
+ref table LocalDateTable_507603f3-7ea2-4560-a03f-2d0b67e5fc1e
+ref table tbl_refresh_metadata
+ref table LocalDateTable_818dd6e7-3fda-4430-8aca-de60674ae5d5
+ref table tbl_fact_macro
+ref table LocalDateTable_567641cd-2fd9-4781-8279-c556341de564
+
+ref cultureInfo en-US

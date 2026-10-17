@@ -64,7 +64,7 @@ Create directories only when their task needs them. Task 01 creates the minimum 
 
 | Model | Grain | Required contract |
 | --- | --- | --- |
-| `dim_date` | one calendar date | `date_key`, `calendar_date` |
+| `dim_date` | one calendar date | date-valued `date_key`, year, month, day |
 | `dim_currency` | one currency | `currency_code`, region |
 | `dim_fx_pair` | one directed pair | `pair_id`, `base_ccy`, `quote_ccy` |
 | `dim_indicator` | one macro series | `indicator_id`, unit, frequency |

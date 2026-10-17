@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "FX Market Intelligence Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7f1d09d8-a06b-4019-b1ca-65fee1e75547"
+  }
+}

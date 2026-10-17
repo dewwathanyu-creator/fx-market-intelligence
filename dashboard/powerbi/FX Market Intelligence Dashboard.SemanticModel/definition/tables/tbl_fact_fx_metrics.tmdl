@@ -1,0 +1,147 @@
+table tbl_fact_fx_metrics
+	lineageTag: 950c7266-4a0e-4a8d-824e-65d742519b6a
+
+	column source_id
+		dataType: string
+		lineageTag: 3230b3fa-47ab-4eaf-88b1-a3cfef686780
+		summarizeBy: none
+		sourceColumn: source_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pair_id
+		dataType: string
+		lineageTag: a8e1e56f-2d05-42dc-b274-4c647eb7991d
+		summarizeBy: none
+		sourceColumn: pair_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate_type
+		dataType: string
+		lineageTag: f4564b3a-fb3e-4426-a9da-b1b3b59667ef
+		summarizeBy: none
+		sourceColumn: rate_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column observation_date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 34ee7a96-59c0-4a93-9d19-c979953516e1
+		summarizeBy: none
+		sourceColumn: observation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column indexed_rate
+		dataType: double
+		lineageTag: 9d872995-94c6-4ac1-9975-17785613c160
+		summarizeBy: sum
+		sourceColumn: indexed_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column simple_return
+		dataType: double
+		lineageTag: a432e4a5-8f45-4e92-84f5-6e51a29c4c41
+		summarizeBy: sum
+		sourceColumn: simple_return
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column log_return
+		dataType: double
+		lineageTag: 40d8cd00-1f15-4189-a597-a1ff06613784
+		summarizeBy: sum
+		sourceColumn: log_return
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column drawdown
+		dataType: double
+		lineageTag: a56c16c6-a0ae-48eb-b0e2-6124ab191c0b
+		summarizeBy: sum
+		sourceColumn: drawdown
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rolling_return_5
+		dataType: double
+		lineageTag: afce34fa-ce8a-479a-a00e-78cd8f3250f3
+		summarizeBy: sum
+		sourceColumn: rolling_return_5
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rolling_return_20
+		dataType: double
+		lineageTag: 77b8f8c3-6e77-4f7c-83fb-839045024fac
+		summarizeBy: sum
+		sourceColumn: rolling_return_20
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rolling_return_60
+		dataType: double
+		lineageTag: fed6b48e-ef1c-4231-81bf-8f1bf1153be4
+		summarizeBy: sum
+		sourceColumn: rolling_return_60
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volatility_20
+		dataType: double
+		lineageTag: 9bc63e39-1e6b-4d35-97c5-a6a70acacdca
+		summarizeBy: sum
+		sourceColumn: volatility_20
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volatility_60
+		dataType: double
+		lineageTag: 6e039c41-cedb-4c6c-aedd-a51bcd68dc0b
+		summarizeBy: sum
+		sourceColumn: volatility_60
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volatility_120
+		dataType: double
+		lineageTag: 41df3f48-6002-42b6-acd7-8fbc66ab0bf0
+		summarizeBy: sum
+		sourceColumn: volatility_120
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition tbl_fact_fx_metrics = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\acer\Desktop\FX Market Intelligence Dashboard\dashboard\powerbi\data\fx_model.xlsx"), null, true),
+				    tbl_fact_fx_metrics_Table = Source{[Item="tbl_fact_fx_metrics",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(tbl_fact_fx_metrics_Table,{{"source_id", type text}, {"pair_id", type text}, {"rate_type", type text}, {"observation_date", type date}, {"indexed_rate", type number}, {"simple_return", type number}, {"log_return", type number}, {"drawdown", type number}, {"rolling_return_5", type number}, {"rolling_return_20", type number}, {"rolling_return_60", type number}, {"volatility_20", type number}, {"volatility_60", type number}, {"volatility_120", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

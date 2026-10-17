@@ -1,0 +1,30 @@
+table tbl_dim_source
+	lineageTag: a4698f96-c834-4e42-9731-c10a921dcdf3
+
+	column source_id
+		dataType: string
+		lineageTag: c38dba39-a3fc-4f69-839e-3083218a48e4
+		summarizeBy: none
+		sourceColumn: source_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column provider
+		dataType: string
+		lineageTag: 15cfccf5-b5cd-45d1-b547-b8d85cce0423
+		summarizeBy: none
+		sourceColumn: provider
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_dim_source = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\acer\Desktop\FX Market Intelligence Dashboard\dashboard\powerbi\data\fx_model.xlsx"), null, true),
+				    tbl_dim_source_Table = Source{[Item="tbl_dim_source",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(tbl_dim_source_Table,{{"source_id", type text}, {"provider", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

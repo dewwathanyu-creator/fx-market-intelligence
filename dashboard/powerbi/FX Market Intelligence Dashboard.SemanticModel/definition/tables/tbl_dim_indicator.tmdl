@@ -1,0 +1,38 @@
+table tbl_dim_indicator
+	lineageTag: 334ae492-18dd-4f07-a792-87c8fb616266
+
+	column indicator_id
+		dataType: string
+		lineageTag: ef5dfe68-9b3f-4dec-8ddb-9a4ffc33a33b
+		summarizeBy: none
+		sourceColumn: indicator_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: 1d2b0bb5-c3ae-4008-af44-8194e5d24dd5
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column frequency
+		dataType: string
+		lineageTag: a48f44f8-02f6-46bc-8cd9-20d46189c498
+		summarizeBy: none
+		sourceColumn: frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_dim_indicator = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\acer\Desktop\FX Market Intelligence Dashboard\dashboard\powerbi\data\fx_model.xlsx"), null, true),
+				    tbl_dim_indicator_Table = Source{[Item="tbl_dim_indicator",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(tbl_dim_indicator_Table,{{"indicator_id", type text}, {"unit", type text}, {"frequency", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

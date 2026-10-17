@@ -1,0 +1,58 @@
+table tbl_dim_date
+	lineageTag: cf3fc099-81c3-4a8d-923c-5734c15f878e
+
+	column date_key
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 54f61feb-0d17-4c0e-9c58-b1934550eaa1
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: dedeeaad-c432-40be-8aff-6f81116b0223
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: 8dd21d0e-930f-40b6-a127-139fd7226d62
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 05c114b0-b6a1-4a45-b9bf-79712775825d
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column day
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c6f66f1-c2f7-4510-9ba3-0f331e007333
+		summarizeBy: sum
+		sourceColumn: day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\acer\Desktop\FX Market Intelligence Dashboard\dashboard\powerbi\data\fx_model.xlsx"), null, true),
+				    tbl_dim_date_Table = Source{[Item="tbl_dim_date",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(tbl_dim_date_Table,{{"date_key", type date}, {"year", Int64.Type}, {"month", Int64.Type}, {"month_name", type text}, {"day", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

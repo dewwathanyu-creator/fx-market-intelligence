@@ -1,0 +1,97 @@
+table tbl_fact_macro
+	lineageTag: 5d44bc52-eb3f-4cdc-b84d-4d464ee4766f
+
+	column source_id
+		dataType: string
+		lineageTag: 2345a60e-3af5-40e4-97a6-46abc70972b2
+		summarizeBy: none
+		sourceColumn: source_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column series_id
+		dataType: string
+		lineageTag: 8608659a-8b0e-4d13-a15b-0738ff69bbed
+		summarizeBy: none
+		sourceColumn: series_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column observation_date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 63281bf0-ea3d-43da-b7c7-a81f03fb92d5
+		summarizeBy: none
+		sourceColumn: observation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column vintage_date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: 949d485c-2883-4ba7-9b05-7e743bcd559c
+		summarizeBy: none
+		sourceColumn: vintage_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_date
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		lineageTag: c5d3b978-ad14-4cd1-92b6-65fd393ceb6b
+		summarizeBy: none
+		sourceColumn: release_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: 39c2e843-dd30-49ce-803c-8095b418b2ac
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit
+		dataType: string
+		lineageTag: 4fe6c345-e175-4745-a987-eb4d4e9195d4
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column frequency
+		dataType: string
+		lineageTag: ffbbfded-4577-4f62-9dde-55f76d44b6df
+		summarizeBy: none
+		sourceColumn: frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column retrieved_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 15ec9794-f6ea-42c6-bb0e-b83653bbcf7a
+		summarizeBy: none
+		sourceColumn: retrieved_at
+
+		variation Variation
+			isDefault
+			relationship: 996377e5-0e3a-4879-9c09-70ab41096b3f
+			defaultHierarchy: LocalDateTable_567641cd-2fd9-4781-8279-c556341de564.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_fact_macro = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\acer\Desktop\FX Market Intelligence Dashboard\dashboard\powerbi\data\fx_model.xlsx"), null, true),
+				    tbl_fact_macro_Table = Source{[Item="tbl_fact_macro",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(tbl_fact_macro_Table,{{"source_id", type text}, {"series_id", type text}, {"observation_date", type date}, {"vintage_date", type date}, {"release_date", type date}, {"value", type number}, {"unit", type text}, {"frequency", type text}, {"retrieved_at", type datetimezone}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

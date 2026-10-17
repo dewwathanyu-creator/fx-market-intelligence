@@ -1,0 +1,30 @@
+table tbl_dim_currency
+	lineageTag: f5b8dd56-51ab-4ce8-b9ca-b468fccca2af
+
+	column currency_code
+		dataType: string
+		lineageTag: b89a0c22-6306-40bd-b64b-94c6ef62a4ac
+		summarizeBy: none
+		sourceColumn: currency_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: d7e091a3-15fb-4d2a-ad25-a2d59058dd5b
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_dim_currency = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\acer\Desktop\FX Market Intelligence Dashboard\dashboard\powerbi\data\fx_model.xlsx"), null, true),
+				    tbl_dim_currency_Table = Source{[Item="tbl_dim_currency",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(tbl_dim_currency_Table,{{"currency_code", type text}, {"region", type any}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

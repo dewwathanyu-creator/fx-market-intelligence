@@ -1,0 +1,50 @@
+relationship b0614c56-8449-40ed-911a-7f93669e92e1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_fact_fx_rates.retrieved_at
+	toColumn: LocalDateTable_507603f3-7ea2-4560-a03f-2d0b67e5fc1e.Date
+
+relationship 0d256951-d6aa-4b7a-86aa-92c8290fd072
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_refresh_metadata.last_success_at
+	toColumn: LocalDateTable_818dd6e7-3fda-4430-8aca-de60674ae5d5.Date
+
+relationship 996377e5-0e3a-4879-9c09-70ab41096b3f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_fact_macro.retrieved_at
+	toColumn: LocalDateTable_567641cd-2fd9-4781-8279-c556341de564.Date
+
+relationship AutoDetected_1e031b74-d98d-48bf-b32f-c56c9fbd375c
+	fromColumn: tbl_fact_fx_metrics.pair_id
+	toColumn: tbl_dim_fx_pair.pair_id
+
+relationship AutoDetected_f7c7882e-eadf-4c03-bd68-232edd8ffb3f
+	fromColumn: tbl_fact_fx_rates.pair_id
+	toColumn: tbl_dim_fx_pair.pair_id
+
+relationship AutoDetected_563a6c60-5a7a-4074-a83c-4a6745e4c55b
+	fromColumn: tbl_fact_fx_metrics.source_id
+	toColumn: tbl_dim_source.source_id
+
+relationship AutoDetected_a911c303-aa43-44ea-8be3-33fd3f8fd148
+	fromColumn: tbl_fact_fx_rates.source_id
+	toColumn: tbl_dim_source.source_id
+
+relationship AutoDetected_79c0cdcc-5545-4005-9683-369426c8d38b
+	fromColumn: tbl_fact_macro.source_id
+	toColumn: tbl_dim_source.source_id
+
+relationship fx_rates_date
+	fromColumn: tbl_fact_fx_rates.observation_date
+	toColumn: tbl_dim_date.date_key
+
+relationship fx_metrics_date
+	fromColumn: tbl_fact_fx_metrics.observation_date
+	toColumn: tbl_dim_date.date_key
+
+relationship macro_date
+	fromColumn: tbl_fact_macro.observation_date
+	toColumn: tbl_dim_date.date_key
+
+relationship macro_indicator
+	fromColumn: tbl_fact_macro.series_id
+	toColumn: tbl_dim_indicator.indicator_id

@@ -1,0 +1,46 @@
+table tbl_refresh_metadata
+	lineageTag: 1cf17f9e-17ed-4baa-a207-1d2e7b7de7bf
+
+	column last_success_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 577fa86a-ad25-4761-82f9-a83b8ffdc4a3
+		summarizeBy: none
+		sourceColumn: last_success_at
+
+		variation Variation
+			isDefault
+			relationship: 0d256951-d6aa-4b7a-86aa-92c8290fd072
+			defaultHierarchy: LocalDateTable_818dd6e7-3fda-4430-8aca-de60674ae5d5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column fx_row_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 6fc7beaa-cb4c-4613-90b3-a1f2d2387224
+		summarizeBy: sum
+		sourceColumn: fx_row_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column macro_row_count
+		dataType: int64
+		formatString: 0
+		lineageTag: dce30de0-ade8-4dda-aa0a-130db22292c8
+		summarizeBy: sum
+		sourceColumn: macro_row_count
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_refresh_metadata = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\acer\Desktop\FX Market Intelligence Dashboard\dashboard\powerbi\data\fx_model.xlsx"), null, true),
+				    tbl_refresh_metadata_Table = Source{[Item="tbl_refresh_metadata",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(tbl_refresh_metadata_Table,{{"last_success_at", type datetimezone}, {"fx_row_count", Int64.Type}, {"macro_row_count", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
