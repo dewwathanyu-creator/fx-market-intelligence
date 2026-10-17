@@ -4,10 +4,10 @@
   "position": {
     "x": 283,
     "y": 385,
-    "z": 1035,
+    "z": 1042,
     "height": 297,
     "width": 721,
-    "tabOrder": 1035
+    "tabOrder": 1042
   },
   "visual": {
     "visualType": "lineChart",
@@ -77,6 +77,19 @@
         }
       ],
       "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
         {
           "properties": {
             "show": {

@@ -43,6 +43,10 @@ The current computer-control inventory does not expose native app windows. The u
 
 The Task 11 Desktop screenshots were local QA evidence at the time of that task. Task 14 selected six final-page screenshots for the local branch under `dashboard/screenshots/final/`; these include the account name in Power BI window chrome. Review them before publishing the repository outside the local environment.
 
+## Follow-up UI polish
+
+The later UI polish kept all six pages and their model bindings, enlarged primary text, strengthened secondary-text contrast, added selected-navigation and card accents, used a more distinct two-series palette, hid duplicate chart auto titles, and reduced the two detail tables to three relevant columns. The user supplied a new Market Overview Desktop image after the first polish: the chart, four KPI values, context cards and footer rendered, while three enlarged sidebar names were clipped. The generator then shortened those names to `Currencies`, `Thailand FX` and `Data Quality`. Static PBIR checks and the full Python suite passed after the correction. At the user's request, no further Desktop screenshot review was required; the final sidebar labels and other five pages have not been reverified visually after this follow-up. The six final screenshots above still show the earlier accepted version.
+
 ## Interpretation limits
 
 - The report is for research, not live trading or execution.

@@ -4,10 +4,10 @@
   "position": {
     "x": 286,
     "y": 348,
-    "z": 1035,
+    "z": 1042,
     "height": 32,
     "width": 715,
-    "tabOrder": 1035
+    "tabOrder": 1042
   },
   "visual": {
     "visualType": "textbox",
@@ -22,7 +22,7 @@
                     "value": "USD/THB interbank trend · THB per USD",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "18px",
+                      "fontSize": "19px",
                       "color": "#192b3c",
                       "fontWeight": "bold"
                     }

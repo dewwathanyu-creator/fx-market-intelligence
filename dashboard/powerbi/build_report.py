@@ -23,8 +23,8 @@ PAGE_SCHEMA = (
     "2.1.0/schema.json"
 )
 INK = "#192b3c"
-MUTED = "#667f91"
-TEAL = "#119fa8"
+MUTED = "#526979"
+TEAL = "#0c6472"
 NAVY = "#102e3d"
 WHITE = "#ffffff"
 BG = "#f3f7f8"
@@ -65,6 +65,7 @@ def _vco_background(color: str = WHITE) -> dict:
     return {
         "background": [{"properties": {"show": _literal(True), "color": _color(color)}}],
         "border": [{"properties": {"show": _literal(False)}}],
+        "title": [{"properties": {"show": _literal(False)}}],
         "padding": [
             {"properties": {side: _literal(0) for side in ("top", "bottom", "left", "right")}}
         ],
@@ -232,7 +233,7 @@ class Page:
                         "properties": {
                             "text": _literal(f"{icon}  {label}"),
                             "fontColor": _color(WHITE if active else "#b4d0d9"),
-                            "fontSize": _literal(12),
+                            "fontSize": _literal(15),
                             "horizontalAlignment": _literal("left"),
                         },
                         "selector": {"id": "default"},
@@ -301,6 +302,7 @@ class Page:
         compact: bool = False,
     ) -> None:
         self.shape(key + ":bg", x, y, width, 84 if compact else 127, WHITE)
+        self.shape(key + ":accent", x + 18, y, 54, 4, TEAL)
         self.text(
             key + ":label",
             label.upper(),
@@ -308,7 +310,7 @@ class Page:
             y + (10 if compact else 15),
             width - 36,
             25,
-            size=12,
+            size=14,
             color=MUTED,
         )
         self.add(
@@ -354,7 +356,7 @@ class Page:
         series: tuple[str, str] | None = None,
     ) -> None:
         self.shape(key + ":bg", x, y, width, height, WHITE)
-        self.text(key + ":title", title, x + 20, y + 14, width - 40, 32, size=18, bold=True)
+        self.text(key + ":title", title, x + 20, y + 14, width - 40, 32, size=19, bold=True)
         query_state = {
             "Category": {"projections": [_projection("tbl_dim_date", "date_key")]},
             "Y": {
@@ -387,7 +389,7 @@ class Page:
         height: int = 364,
     ) -> None:
         self.shape(key + ":bg", x, y, width, height, WHITE)
-        self.text(key + ":title", title, x + 18, y + 14, width - 36, 31, size=18, bold=True)
+        self.text(key + ":title", title, x + 18, y + 14, width - 36, 31, size=19, bold=True)
         self.add(
             key,
             "tableEx",
@@ -459,22 +461,31 @@ def _base(title: str, index: int) -> Page:
     page = Page(title, index)
     page.shape("canvas", 0, 0, 1440, 900, BG)
     page.shape("sidebar", 0, 0, 232, 900, NAVY)
-    page.text("brand", "◆  FX INTELLIGENCE", 22, 25, 190, 42, size=18, color=WHITE, bold=True)
-    page.text("menu-label", "DASHBOARD", 25, 91, 170, 24, size=11, color="#a6c5ce")
+    page.text("brand", "◆  FX INTELLIGENCE", 22, 25, 195, 42, size=19, color=WHITE, bold=True)
+    page.text("menu-label", "DASHBOARD", 25, 91, 170, 24, size=13, color="#c0dbe2")
+    short_nav = {
+        "Currency Explorer": "Currencies",
+        "Thailand FX Monitor": "Thailand FX",
+        "Data Quality & Research": "Data Quality",
+    }
     for nav_index, (nav_title, icon, _) in enumerate(PAGE_SPECS):
-        nav_label = "Quality & Research" if nav_title == "Data Quality & Research" else nav_title
+        nav_label = short_nav.get(nav_title, nav_title)
         page.nav(
             _id("page:" + nav_title), icon, nav_label, 123 + nav_index * 44, index == nav_index
         )
-    page.text("rail-note", "RESEARCH · NOT TRADING", 24, 412, 190, 30, size=11, color="#aacbd3")
-    page.text("title", title, 266, 25, 760, 48, size=29, bold=True)
-    page.text("subtitle", PAGE_SPECS[index][2], 267, 64, 850, 30, size=14, color=MUTED)
+        if index == nav_index:
+            page.shape("active-nav-marker", 16, 123 + nav_index * 44, 4, 39, "#39bdc4")
+    page.text("rail-note", "RESEARCH · NOT TRADING", 24, 412, 196, 30, size=12, color="#c0dbe2")
+    page.text("title", title, 266, 23, 760, 50, size=31, bold=True)
+    page.text("subtitle", PAGE_SPECS[index][2], 267, 65, 850, 29, size=16, color=MUTED)
     page.text(
-        "scope-badge", "OFFICIAL DATA · LOCAL REFRESH", 1145, 30, 270, 30, size=11, color=TEAL
+        "scope-badge", "OFFICIAL DATA · LOCAL REFRESH", 1135, 30, 280, 30, size=12, color=TEAL
     )
+    page.shape("header-rule", 266, 87, 1138, 2, "#dce8eb")
     page.shape("footer-bg", 266, 718, 1138, 141, WHITE)
+    page.shape("footer-rule", 266, 718, 1138, 2, "#dce8eb")
     page.text(
-        "footer-title", "SOURCE  ·  OBSERVATION  ·  REFRESH", 288, 738, 530, 28, size=14, bold=True
+        "footer-title", "SOURCE  ·  OBSERVATION  ·  REFRESH", 288, 738, 530, 28, size=15, bold=True
     )
     page.text(
         "footer-note",
@@ -483,7 +494,7 @@ def _base(title: str, index: int) -> Page:
         823,
         1080,
         27,
-        size=12,
+        size=13,
         color=MUTED,
     )
     page.text(
@@ -493,18 +504,18 @@ def _base(title: str, index: int) -> Page:
         875,
         1000,
         20,
-        size=11,
+        size=12,
         color=MUTED,
     )
     return page
 
 
 def _footer(page: Page, source_label: str, observation_measure: str) -> None:
-    page.text("footer-source", source_label, 288, 775, 530, 32, size=13, color=INK)
+    page.text("footer-source", source_label, 288, 775, 530, 32, size=14, color=INK)
     page.text(
-        "footer-observation-label", "OBSERVED THROUGH", 850, 742, 235, 22, size=11, color=MUTED
+        "footer-observation-label", "OBSERVED THROUGH", 850, 742, 235, 22, size=12, color=MUTED
     )
-    page.text("footer-refresh-label", "WAREHOUSE BUILT", 1110, 742, 270, 22, size=11, color=MUTED)
+    page.text("footer-refresh-label", "WAREHOUSE BUILT", 1110, 742, 270, 22, size=12, color=MUTED)
     page.add(
         "footer-observation",
         "cardVisual",
@@ -612,11 +623,9 @@ def build() -> None:
     )
     page.table(
         "comparison",
-        "Underlying BOT observations",
+        "Selected BOT quote observations",
         [
-            ("tbl_fact_fx_rates", "source_id"),
             ("tbl_fact_fx_rates", "pair_id"),
-            ("tbl_fact_fx_rates", "rate_type"),
             ("tbl_fact_fx_rates", "observation_date"),
             ("tbl_fact_fx_rates", "rate"),
         ],
@@ -750,13 +759,11 @@ def build() -> None:
     page.chart("coverage", "FX observations by observation date", ["Daily FX Observation Count"])
     page.table(
         "quality-table",
-        "Source and rate ledger",
+        "Source coverage · observed dates",
         [
             ("tbl_fact_fx_rates", "source_id"),
-            ("tbl_fact_fx_rates", "series_id"),
             ("tbl_fact_fx_rates", "rate_type"),
             ("tbl_fact_fx_rates", "observation_date"),
-            ("tbl_fact_fx_rates", "retrieved_at"),
         ],
     )
     _footer(page, "BOT · 3 FX series / FRED · 5 macro series", "Latest FX Observation Date")

@@ -4,10 +4,10 @@
   "position": {
     "x": 16,
     "y": 299,
-    "z": 1008,
+    "z": 1009,
     "height": 39,
     "width": 202,
-    "tabOrder": 1008
+    "tabOrder": 1009
   },
   "visual": {
     "visualType": "actionButton",
@@ -100,7 +100,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'⌖  Thailand FX Monitor'"
+                  "Value": "'⌖  Thailand FX'"
                 }
               }
             },
@@ -118,7 +118,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "15D"
                 }
               }
             },

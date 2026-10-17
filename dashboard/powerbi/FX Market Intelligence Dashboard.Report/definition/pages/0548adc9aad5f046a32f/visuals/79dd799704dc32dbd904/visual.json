@@ -4,10 +4,10 @@
   "position": {
     "x": 566,
     "y": 202,
-    "z": 1026,
+    "z": 1031,
     "height": 25,
     "width": 229,
-    "tabOrder": 1026
+    "tabOrder": 1031
   },
   "visual": {
     "visualType": "textbox",
@@ -22,8 +22,8 @@
                     "value": "MOVE VS PRIOR OBS.",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "12px",
-                      "color": "#667f91"
+                      "fontSize": "14px",
+                      "color": "#526979"
                     }
                   }
                 ],

@@ -4,10 +4,10 @@
   "position": {
     "x": 16,
     "y": 343,
-    "z": 1009,
+    "z": 1010,
     "height": 39,
     "width": 202,
-    "tabOrder": 1009
+    "tabOrder": 1010
   },
   "visual": {
     "visualType": "actionButton",
@@ -100,7 +100,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'☑  Quality & Research'"
+                  "Value": "'☑  Data Quality'"
                 }
               }
             },
@@ -118,7 +118,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "15D"
                 }
               }
             },

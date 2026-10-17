@@ -4,10 +4,10 @@
   "position": {
     "x": 848,
     "y": 202,
-    "z": 1030,
+    "z": 1036,
     "height": 25,
     "width": 229,
-    "tabOrder": 1030
+    "tabOrder": 1036
   },
   "visual": {
     "visualType": "textbox",
@@ -22,8 +22,8 @@
                     "value": "USD PERIOD MOVE",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "12px",
-                      "color": "#667f91"
+                      "fontSize": "14px",
+                      "color": "#526979"
                     }
                   }
                 ],

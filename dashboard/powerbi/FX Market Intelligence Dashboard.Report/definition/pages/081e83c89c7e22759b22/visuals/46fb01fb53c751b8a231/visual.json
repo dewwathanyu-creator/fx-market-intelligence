@@ -4,10 +4,10 @@
   "position": {
     "x": 1073,
     "y": 543,
-    "z": 1041,
+    "z": 1049,
     "height": 25,
     "width": 297,
-    "tabOrder": 1041
+    "tabOrder": 1049
   },
   "visual": {
     "visualType": "textbox",
@@ -22,8 +22,8 @@
                     "value": "OBSERVED FX DATES",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "12px",
-                      "color": "#667f91"
+                      "fontSize": "14px",
+                      "color": "#526979"
                     }
                   }
                 ],

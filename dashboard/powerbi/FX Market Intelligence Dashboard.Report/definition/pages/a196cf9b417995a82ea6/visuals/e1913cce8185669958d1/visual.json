@@ -4,10 +4,10 @@
   "position": {
     "x": 288,
     "y": 738,
-    "z": 1015,
+    "z": 1018,
     "height": 28,
     "width": 530,
-    "tabOrder": 1015
+    "tabOrder": 1018
   },
   "visual": {
     "visualType": "textbox",
@@ -22,7 +22,7 @@
                     "value": "SOURCE  ·  OBSERVATION  ·  REFRESH",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "14px",
+                      "fontSize": "15px",
                       "color": "#192b3c",
                       "fontWeight": "bold"
                     }

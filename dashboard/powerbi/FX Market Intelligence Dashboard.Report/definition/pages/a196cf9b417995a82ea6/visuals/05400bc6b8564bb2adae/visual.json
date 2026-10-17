@@ -4,10 +4,10 @@
   "position": {
     "x": 284,
     "y": 202,
-    "z": 1022,
+    "z": 1026,
     "height": 25,
     "width": 229,
-    "tabOrder": 1022
+    "tabOrder": 1026
   },
   "visual": {
     "visualType": "textbox",
@@ -22,8 +22,8 @@
                     "value": "USD/THB BANK AVG.",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "12px",
-                      "color": "#667f91"
+                      "fontSize": "14px",
+                      "color": "#526979"
                     }
                   }
                 ],

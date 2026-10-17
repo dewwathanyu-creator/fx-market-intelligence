@@ -4,10 +4,10 @@
   "position": {
     "x": 288,
     "y": 775,
-    "z": 1050,
+    "z": 1060,
     "height": 32,
     "width": 530,
-    "tabOrder": 1050
+    "tabOrder": 1060
   },
   "visual": {
     "visualType": "textbox",
@@ -22,7 +22,7 @@
                     "value": "BOT FX + FRED macro · release date absent",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "13px",
+                      "fontSize": "14px",
                       "color": "#192b3c"
                     }
                   }

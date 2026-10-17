@@ -4,10 +4,10 @@
   "position": {
     "x": 1073,
     "y": 596,
-    "z": 1046,
+    "z": 1056,
     "height": 25,
     "width": 297,
-    "tabOrder": 1046
+    "tabOrder": 1056
   },
   "visual": {
     "visualType": "textbox",
@@ -22,8 +22,8 @@
                     "value": "PERIOD MOVE",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "12px",
-                      "color": "#667f91"
+                      "fontSize": "14px",
+                      "color": "#526979"
                     }
                   }
                 ],

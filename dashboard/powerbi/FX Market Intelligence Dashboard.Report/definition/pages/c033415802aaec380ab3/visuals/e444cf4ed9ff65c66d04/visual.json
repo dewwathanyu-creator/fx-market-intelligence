@@ -4,10 +4,10 @@
   "position": {
     "x": 286,
     "y": 348,
-    "z": 1036,
+    "z": 1043,
     "height": 32,
     "width": 715,
-    "tabOrder": 1036
+    "tabOrder": 1043
   },
   "visual": {
     "visualType": "textbox",
@@ -22,7 +22,7 @@
                     "value": "Indexed bank-average performance · shared 2026 baseline",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "18px",
+                      "fontSize": "19px",
                       "color": "#192b3c",
                       "fontWeight": "bold"
                     }

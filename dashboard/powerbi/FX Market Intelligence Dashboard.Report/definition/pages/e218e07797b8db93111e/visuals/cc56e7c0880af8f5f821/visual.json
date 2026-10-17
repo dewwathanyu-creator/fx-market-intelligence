@@ -4,10 +4,10 @@
   "position": {
     "x": 1056,
     "y": 348,
-    "z": 1037,
+    "z": 1044,
     "height": 31,
     "width": 330,
-    "tabOrder": 1037
+    "tabOrder": 1044
   },
   "visual": {
     "visualType": "textbox",
@@ -19,10 +19,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "Source and rate ledger",
+                    "value": "Source coverage · observed dates",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "18px",
+                      "fontSize": "19px",
                       "color": "#192b3c",
                       "fontWeight": "bold"
                     }

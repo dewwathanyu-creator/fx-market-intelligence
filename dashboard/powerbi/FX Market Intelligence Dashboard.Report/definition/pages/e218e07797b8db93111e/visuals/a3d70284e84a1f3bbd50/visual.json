@@ -4,10 +4,10 @@
   "position": {
     "x": 1053,
     "y": 384,
-    "z": 1038,
+    "z": 1045,
     "height": 298,
     "width": 336,
-    "tabOrder": 1038
+    "tabOrder": 1045
   },
   "visual": {
     "visualType": "tableEx",
@@ -37,20 +37,6 @@
                       "Entity": "tbl_fact_fx_rates"
                     }
                   },
-                  "Property": "series_id"
-                }
-              },
-              "queryRef": "tbl_fact_fx_rates.series_id",
-              "nativeQueryRef": "series_id"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "tbl_fact_fx_rates"
-                    }
-                  },
                   "Property": "rate_type"
                 }
               },
@@ -70,20 +56,6 @@
               },
               "queryRef": "tbl_fact_fx_rates.observation_date",
               "nativeQueryRef": "observation_date"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "tbl_fact_fx_rates"
-                    }
-                  },
-                  "Property": "retrieved_at"
-                }
-              },
-              "queryRef": "tbl_fact_fx_rates.retrieved_at",
-              "nativeQueryRef": "retrieved_at"
             }
           ]
         }
@@ -115,6 +87,19 @@
         }
       ],
       "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
         {
           "properties": {
             "show": {

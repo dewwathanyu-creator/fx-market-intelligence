@@ -4,10 +4,10 @@
   "position": {
     "x": 850,
     "y": 742,
-    "z": 1051,
+    "z": 1061,
     "height": 22,
     "width": 235,
-    "tabOrder": 1051
+    "tabOrder": 1061
   },
   "visual": {
     "visualType": "textbox",
@@ -22,8 +22,8 @@
                     "value": "OBSERVED THROUGH",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "11px",
-                      "color": "#667f91"
+                      "fontSize": "12px",
+                      "color": "#526979"
                     }
                   }
                 ],

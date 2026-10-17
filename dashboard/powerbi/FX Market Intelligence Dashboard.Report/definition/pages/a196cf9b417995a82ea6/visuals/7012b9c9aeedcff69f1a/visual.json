@@ -4,10 +4,10 @@
   "position": {
     "x": 286,
     "y": 348,
-    "z": 1034,
+    "z": 1041,
     "height": 32,
     "width": 715,
-    "tabOrder": 1034
+    "tabOrder": 1041
   },
   "visual": {
     "visualType": "textbox",
@@ -22,7 +22,7 @@
                     "value": "Indexed THB bilateral quotes · same rate type",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "18px",
+                      "fontSize": "19px",
                       "color": "#192b3c",
                       "fontWeight": "bold"
                     }

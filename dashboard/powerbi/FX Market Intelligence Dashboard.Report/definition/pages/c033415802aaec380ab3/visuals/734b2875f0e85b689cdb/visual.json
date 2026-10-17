@@ -4,10 +4,10 @@
   "position": {
     "x": 16,
     "y": 211,
-    "z": 1006,
+    "z": 1007,
     "height": 39,
     "width": 202,
-    "tabOrder": 1006
+    "tabOrder": 1007
   },
   "visual": {
     "visualType": "actionButton",
@@ -118,7 +118,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "15D"
                 }
               }
             },

@@ -4,10 +4,10 @@
   "position": {
     "x": 1073,
     "y": 496,
-    "z": 1043,
+    "z": 1052,
     "height": 25,
     "width": 297,
-    "tabOrder": 1043
+    "tabOrder": 1052
   },
   "visual": {
     "visualType": "textbox",
@@ -22,8 +22,8 @@
                     "value": "FIRST QUOTE",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "12px",
-                      "color": "#667f91"
+                      "fontSize": "14px",
+                      "color": "#526979"
                     }
                   }
                 ],

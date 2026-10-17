@@ -4,10 +4,10 @@
   "position": {
     "x": 288,
     "y": 775,
-    "z": 1039,
+    "z": 1046,
     "height": 32,
     "width": 530,
-    "tabOrder": 1039
+    "tabOrder": 1046
   },
   "visual": {
     "visualType": "textbox",
@@ -22,7 +22,7 @@
                     "value": "BOT · 3 FX series / FRED · 5 macro series",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "13px",
+                      "fontSize": "14px",
                       "color": "#192b3c"
                     }
                   }

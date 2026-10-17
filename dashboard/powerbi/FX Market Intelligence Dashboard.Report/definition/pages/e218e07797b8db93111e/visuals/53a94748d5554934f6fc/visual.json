@@ -100,7 +100,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'◉  Currency Explorer'"
+                  "Value": "'◉  Currencies'"
                 }
               }
             },
@@ -118,7 +118,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "15D"
                 }
               }
             },

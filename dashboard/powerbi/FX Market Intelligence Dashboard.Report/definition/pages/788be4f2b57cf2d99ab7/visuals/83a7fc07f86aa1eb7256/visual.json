@@ -3,11 +3,11 @@
   "name": "83a7fc07f86aa1eb7256",
   "position": {
     "x": 267,
-    "y": 64,
-    "z": 1012,
-    "height": 30,
+    "y": 65,
+    "z": 1013,
+    "height": 29,
     "width": 850,
-    "tabOrder": 1012
+    "tabOrder": 1013
   },
   "visual": {
     "visualType": "textbox",
@@ -22,8 +22,8 @@
                     "value": "BOT FX + FRED macro · exploratory association",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "14px",
-                      "color": "#667f91"
+                      "fontSize": "16px",
+                      "color": "#526979"
                     }
                   }
                 ],

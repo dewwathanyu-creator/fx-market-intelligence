@@ -1,8 +1,8 @@
 {
   "name": "Fluent2-CY26SU09",
   "dataColors": [
-    "#118DFF",
-    "#12239E",
+    "#1670D5",
+    "#B85B00",
     "#E66C37",
     "#6B007B",
     "#E044A7",
@@ -42,7 +42,7 @@
   "backgroundLight": "#C8C6C4",
   "backgroundNeutral": "#C7C7C7",
   "backgroundDark": "#E6E6E6",
-  "tableAccent": "#118DFF",
+  "tableAccent": "#0C6472",
   "shapeStroke": "#D1D1D1",
   "disabledText": "#B3B3B3",
   "good": "#9FD89F",
@@ -61,17 +61,17 @@
       "color": "#242424"
     },
     "title": {
-      "fontSize": 12,
-      "fontFace": "DIN",
+      "fontSize": 14,
+      "fontFace": "Segoe UI Semibold",
       "color": "#242424"
     },
     "header": {
-      "fontSize": 12,
+      "fontSize": 14,
       "fontFace": "Segoe UI Semibold",
       "color": "#242424"
     },
     "label": {
-      "fontSize": 10.5,
+      "fontSize": 12,
       "fontFace": "Segoe UI",
       "color": "#242424"
     }

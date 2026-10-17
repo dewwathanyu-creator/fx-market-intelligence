@@ -4,10 +4,10 @@
   "position": {
     "x": 24,
     "y": 412,
-    "z": 1010,
+    "z": 1011,
     "height": 30,
-    "width": 190,
-    "tabOrder": 1010
+    "width": 196,
+    "tabOrder": 1011
   },
   "visual": {
     "visualType": "textbox",
@@ -22,8 +22,8 @@
                     "value": "RESEARCH · NOT TRADING",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "11px",
-                      "color": "#aacbd3"
+                      "fontSize": "12px",
+                      "color": "#c0dbe2"
                     }
                   }
                 ],

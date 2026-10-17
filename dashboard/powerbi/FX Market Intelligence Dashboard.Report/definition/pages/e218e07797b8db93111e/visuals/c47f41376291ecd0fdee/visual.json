@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "c47f41376291ecd0fdee",
   "position": {
-    "x": 1145,
+    "x": 1135,
     "y": 30,
-    "z": 1013,
+    "z": 1014,
     "height": 30,
-    "width": 270,
-    "tabOrder": 1013
+    "width": 280,
+    "tabOrder": 1014
   },
   "visual": {
     "visualType": "textbox",
@@ -22,8 +22,8 @@
                     "value": "OFFICIAL DATA · LOCAL REFRESH",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "11px",
-                      "color": "#119fa8"
+                      "fontSize": "12px",
+                      "color": "#0c6472"
                     }
                   }
                 ],

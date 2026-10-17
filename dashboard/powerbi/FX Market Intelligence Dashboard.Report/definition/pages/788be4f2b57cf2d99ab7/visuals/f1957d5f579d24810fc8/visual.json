@@ -6,7 +6,7 @@
     "y": 25,
     "z": 1002,
     "height": 42,
-    "width": 190,
+    "width": 195,
     "tabOrder": 1002
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "◆  FX INTELLIGENCE",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "18px",
+                      "fontSize": "19px",
                       "color": "#ffffff",
                       "fontWeight": "bold"
                     }

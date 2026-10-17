@@ -4,10 +4,10 @@
   "position": {
     "x": 16,
     "y": 167,
-    "z": 1005,
+    "z": 1006,
     "height": 39,
     "width": 202,
-    "tabOrder": 1005
+    "tabOrder": 1006
   },
   "visual": {
     "visualType": "actionButton",
@@ -100,7 +100,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'◉  Currency Explorer'"
+                  "Value": "'◉  Currencies'"
                 }
               }
             },
@@ -118,7 +118,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "15D"
                 }
               }
             },

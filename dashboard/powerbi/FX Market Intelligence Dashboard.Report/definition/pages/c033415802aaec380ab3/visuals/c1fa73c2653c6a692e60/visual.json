@@ -3,11 +3,11 @@
   "name": "c1fa73c2653c6a692e60",
   "position": {
     "x": 266,
-    "y": 25,
-    "z": 1011,
-    "height": 48,
+    "y": 23,
+    "z": 1012,
+    "height": 50,
     "width": 760,
-    "tabOrder": 1011
+    "tabOrder": 1012
   },
   "visual": {
     "visualType": "textbox",
@@ -22,7 +22,7 @@
                     "value": "Currency Explorer",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "29px",
+                      "fontSize": "31px",
                       "color": "#192b3c",
                       "fontWeight": "bold"
                     }

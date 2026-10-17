@@ -4,10 +4,10 @@
   "position": {
     "x": 676,
     "y": 348,
-    "z": 1037,
+    "z": 1044,
     "height": 32,
     "width": 325,
-    "tabOrder": 1037
+    "tabOrder": 1044
   },
   "visual": {
     "visualType": "textbox",
@@ -22,7 +22,7 @@
                     "value": "FRED indicator · own unit",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "18px",
+                      "fontSize": "19px",
                       "color": "#192b3c",
                       "fontWeight": "bold"
                     }
