@@ -1,0 +1,53 @@
+{
+  "bot_usdthb_interbank": {
+    "retrieved_at": "2025-02-01T00:00:00+00:00",
+    "payload": {
+      "result": {
+        "data": {
+          "data_detail": [
+            {"period": "2025-01-02", "rate": "40.00"},
+            {"period": "2025-01-03", "rate": "44.00"},
+            {"period": "2025-01-06", "rate": "48.00"}
+          ]
+        }
+      }
+    }
+  },
+  "bot_usdthb_bank_average": {
+    "retrieved_at": "2025-02-01T00:00:00+00:00",
+    "payload": {
+      "result": {
+        "data": {
+          "data_detail": [
+            {"period": "2025-01-02", "currency_id": "USD", "mid_rate": "40.20"},
+            {"period": "2025-01-03", "currency_id": "USD", "mid_rate": "44.10"},
+            {"period": "2025-01-06", "currency_id": "USD", "mid_rate": "48.10"}
+          ]
+        }
+      }
+    }
+  },
+  "bot_eurthb_bank_average": {
+    "retrieved_at": "2025-02-01T00:00:00+00:00",
+    "payload": {
+      "result": {
+        "data": {
+          "data_detail": [
+            {"period": "2025-01-02", "currency_id": "EUR", "mid_rate": "43.00"},
+            {"period": "2025-01-03", "currency_id": "EUR", "mid_rate": "44.50"},
+            {"period": "2025-01-06", "currency_id": "EUR", "mid_rate": "46.00"}
+          ]
+        }
+      }
+    }
+  },
+  "fred_dgs2": {
+    "retrieved_at": "2025-02-01T00:00:00+00:00",
+    "payload": {
+      "observations": [
+        {"date": "2025-01-02", "value": "4.20", "realtime_start": "2025-02-01", "realtime_end": "9999-12-31"},
+        {"date": "2025-01-03", "value": "4.25", "realtime_start": "2025-02-01", "realtime_end": "9999-12-31"}
+      ]
+    }
+  }
+}
