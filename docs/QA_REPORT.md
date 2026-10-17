@@ -33,7 +33,7 @@ The sandbox initially blocked Python's default temporary directory and its ordin
 
 ## Dashboard and operational evidence
 
-The Task 11 Desktop QA in `docs/DASHBOARD_QA.md` records all six pages visually reviewed, then date slicer, tooltip, navigation, drillthrough and Back interactions checked by the user. The screenshots remain local and uncommitted because Power BI window chrome shows the user's account name. Task 12 fixture tests simulate idempotent refresh, a stale macro source, a provider failure with a secret-like string, and an independent Power BI refresh failure. Its scheduled workflow is committed but cannot run until it is pushed to GitHub and a persistent Windows runner, project-root variable and API secrets are configured.
+The Task 11 Desktop QA in `docs/DASHBOARD_QA.md` records all six pages visually reviewed, then date slicer, tooltip, navigation, drillthrough and Back interactions checked by the user. At Task 13 the screenshots were local and uncommitted; Task 14 selected six final-page images for the local branch, with the visible account-name caveat recorded in the README. Task 12 fixture tests simulate idempotent refresh, a stale macro source, a provider failure with a secret-like string, and an independent Power BI refresh failure. Its scheduled workflow is committed but cannot run until it is pushed to GitHub and a persistent Windows runner, project-root variable and API secrets are configured.
 
 ## Remaining checks and limits
 
@@ -41,4 +41,4 @@ The Task 11 Desktop QA in `docs/DASHBOARD_QA.md` records all six pages visually 
 - No Power BI service publication or service refresh was attempted. Desktop screenshots confirm rendering and interaction; they do not certify service behavior.
 - The fixture covers short daily histories and one FRED series. It cannot benchmark large datasets or every provider schema variant.
 - Release dates missing from FRED observations stay unknown. This project does not make a causal or historical release-aware claim from observation dates alone.
-- The repository entry README still describes an earlier implementation stage; Task 14 will update it with the final project state and reproduction path.
+- The README was subsequently updated in Task 14 with the delivered project state and reproduction path.

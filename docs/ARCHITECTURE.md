@@ -23,7 +23,11 @@ BOT / FRED (P0) + ECB / BIS / BOT statistics (P1)
             reports and research
 ```
 
-Raw data remains auditable. A failed validation records a quality issue and does not silently enter an analytics mart. Collection, transformation, analytical computation, and BI refresh are independently rerunnable. Prefer local DuckDB and Parquet; introduce scheduling in Task 12.
+Raw data remains auditable. A failed validation records a quality issue and does not silently enter an analytics mart. Collection, transformation, analytical computation, and BI refresh are independently rerunnable. The local warehouse uses DuckDB; the incremental schedule is defined in Task 12 and requires separate activation.
+
+## Delivered implementation
+
+The repository now has BOT and FRED collectors, canonical validation and quarantine, FX transformations, DuckDB facts/dimensions and analytical views, tested performance/risk/macro modules, a Power BI semantic model and six-page PBIP, and an incremental refresh orchestrator. Fixture-based end-to-end and clean-install evidence is in [QA_REPORT.md](QA_REPORT.md). The GitHub Actions schedule is a deployable definition; it is not active until a repository push and persistent runner configuration. Power BI Desktop refresh remains a separate user action. ECB, BIS and official NEER/REER remain planned extensions, not populated warehouse series.
 
 ## Repository target
 
