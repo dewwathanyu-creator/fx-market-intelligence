@@ -39,7 +39,7 @@ table tbl_refresh_metadata
 				let
 				    Source = Excel.Workbook(File.Contents("C:\Users\acer\Desktop\FX Market Intelligence Dashboard\dashboard\powerbi\data\fx_model.xlsx"), null, true),
 				    tbl_refresh_metadata_Table = Source{[Item="tbl_refresh_metadata",Kind="Table"]}[Data],
-				    #"Changed Type" = Table.TransformColumnTypes(tbl_refresh_metadata_Table,{{"last_success_at", type datetimezone}, {"fx_row_count", Int64.Type}, {"macro_row_count", Int64.Type}})
+				    #"Changed Type" = Table.TransformColumnTypes(tbl_refresh_metadata_Table,{{"last_success_at", type datetimezone}, {"fx_row_count", Int64.Type}, {"macro_row_count", Int64.Type}}, "en-US")
 				in
 				    #"Changed Type"
 

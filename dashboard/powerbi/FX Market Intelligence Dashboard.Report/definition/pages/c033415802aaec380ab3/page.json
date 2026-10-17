@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "c033415802aaec380ab3",
+  "displayName": "Currency Explorer",
+  "displayOption": "FitToPage",
+  "height": 900,
+  "width": 1440,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filterbd053834ec54b05d52aaabcd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tbl_dim_fx_pair"
+              }
+            },
+            "Property": "pair_id"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "Pod",
+    "type": "Drillthrough",
+    "acceptsFilterContext": "None",
+    "parameters": [
+      {
+        "name": "Param_Filterbd053834ec54b05d52aaabcd",
+        "boundFilter": "Filterbd053834ec54b05d52aaabcd",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tbl_dim_fx_pair"
+              }
+            },
+            "Property": "pair_id"
+          }
+        }
+      }
+    ]
+  }
+}
