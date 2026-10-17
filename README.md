@@ -6,7 +6,8 @@ An auditable project for exploring official FX and macroeconomic observations. P
 
 ## Review the result
 
-Open [the editable Power BI project](dashboard/powerbi/FX%20Market%20Intelligence%20Dashboard.pbip) in Power BI Desktop. The six images are actual Desktop screenshots of the final report, rather than the illustrative [design mockups](dashboard/mockups/):
+Open [the editable Power BI project](dashboard/powerbi/FX%20Market%20Intelligence%20Dashboard.pbip) in Power BI Desktop. The six images are actual Desktop screenshots from the project package, rather than the illustrative [design mockups](dashboard/mockups/). They precede the later UI polish; the PBIP is the current editable version, and [the design system](docs/POWERBI_DESIGN_SYSTEM.md) records its visual rules:
+
 
 | Page | Purpose | Evidence |
 | --- | --- | --- |
