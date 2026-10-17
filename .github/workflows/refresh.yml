@@ -1,0 +1,44 @@
+name: Scheduled FX refresh
+
+on:
+  schedule:
+    # 14:00 Asia/Bangkok, weekdays. Official observations can still lag.
+    - cron: "0 7 * * 1-5"
+  workflow_dispatch:
+
+concurrency:
+  group: fx-dashboard-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    # Run on the Windows computer that hosts the Desktop PBIP and local data root.
+    runs-on: [self-hosted, Windows, X64, fx-dashboard]
+    env:
+      FX_PROJECT_ROOT: ${{ vars.FX_PROJECT_ROOT }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          clean: false
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install project
+        run: python -m pip install -e .
+      - name: Verify persistent project root
+        shell: pwsh
+        run: |
+          if (-not $env:FX_PROJECT_ROOT) { throw "Set repository variable FX_PROJECT_ROOT" }
+          $registry = Join-Path $env:FX_PROJECT_ROOT 'config/sources/registry.yaml'
+          if (-not (Test-Path -LiteralPath $registry)) { throw "FX_PROJECT_ROOT has no source registry" }
+      - name: Refresh warehouse and check source age
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          BOT_API_KEY: ${{ secrets.BOT_API_KEY }}
+        shell: pwsh
+        run: python -m fx_intelligence.orchestration.refresh refresh --root "$env:FX_PROJECT_ROOT"
