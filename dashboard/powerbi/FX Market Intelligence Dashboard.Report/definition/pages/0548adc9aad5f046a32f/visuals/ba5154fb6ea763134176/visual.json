@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "ba5154fb6ea763134176",
   "position": {
     "x": 283,
@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "tbl_dim_date.date_key",
-              "nativeQueryRef": "date_key"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "tbl_fact_fx_rates"
-                    }
-                  },
-                  "Property": "Overview Rate"
-                }
-              },
-              "queryRef": "tbl_fact_fx_rates.Overview Rate",
-              "nativeQueryRef": "Overview Rate"
+              "nativeQueryRef": "date_key",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "tbl_dim_fx_pair.pair_id",
               "nativeQueryRef": "pair_id"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tbl_fact_fx_rates"
+                    }
+                  },
+                  "Property": "Overview Rate"
+                }
+              },
+              "queryRef": "tbl_fact_fx_rates.Overview Rate",
+              "nativeQueryRef": "Overview Rate"
             }
           ]
         }

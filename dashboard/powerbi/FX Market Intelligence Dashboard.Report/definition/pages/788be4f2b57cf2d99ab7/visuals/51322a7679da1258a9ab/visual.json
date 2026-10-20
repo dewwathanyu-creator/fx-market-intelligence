@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "51322a7679da1258a9ab",
   "position": {
     "x": 673,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "tbl_dim_date.date_key",
-              "nativeQueryRef": "date_key"
+              "nativeQueryRef": "date_key",
+              "active": true
             }
           ]
         },

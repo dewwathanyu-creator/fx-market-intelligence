@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "728920f5deceb03eff68",
   "position": {
     "x": 564,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "tbl_fact_fx_rates.source_id",
-              "nativeQueryRef": "source_id"
+              "nativeQueryRef": "source_id",
+              "active": true
             }
           ]
         }

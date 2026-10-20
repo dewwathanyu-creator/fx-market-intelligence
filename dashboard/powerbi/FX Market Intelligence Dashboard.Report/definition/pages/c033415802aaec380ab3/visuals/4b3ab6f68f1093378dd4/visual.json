@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "4b3ab6f68f1093378dd4",
   "position": {
     "x": 828,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "tbl_dim_fx_pair.pair_id",
-              "nativeQueryRef": "pair_id"
+              "nativeQueryRef": "pair_id",
+              "active": true
             }
           ]
         }
