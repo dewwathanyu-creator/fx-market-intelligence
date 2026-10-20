@@ -1,6 +1,6 @@
 # Exploratory FX and macro research protocol
 
-This project will study whether available interest-rate, inflation, broad-dollar and risk-sentiment observations co-move with directed USD/THB returns. It is descriptive research, not evidence of causality or a trading signal.
+This protocol studies whether available interest-rate, inflation, broad-dollar and risk-sentiment observations co-move with directed USD/THB returns. It is descriptive research, not evidence of causality or a trading signal.
 
 ## Reproducible method
 
@@ -18,4 +18,4 @@ This project will study whether available interest-rate, inflation, broad-dollar
 - Samples, publication lags, holidays, rate-type choice, and quote inversion can materially change a result.
 - OLS here has one factor, no robust standard errors, controls, or causal identification. No p-values or predictive claims are issued.
 
-Task 14 will populate an evidence-based case study after verified live source coverage and dashboard QA. This protocol intentionally contains no invented market finding.
+This protocol intentionally contains no market finding. The descriptive USD/THB comparison is in the [case study](../docs/CASE_STUDY.md).
