@@ -18,7 +18,7 @@ Open [the editable Power BI project](dashboard/powerbi/FX%20Market%20Intelligenc
 | Thailand FX Monitor | Bilateral THB quotes and pending NEER/REER | [Screenshot](dashboard/screenshots/final/thailand-fx-monitor.png) |
 | Data Quality & Research | Coverage, lineage and freshness | [Screenshot](dashboard/screenshots/final/data-quality-research.png) |
 
-The screenshots include the Power BI Desktop account name in the application chrome. Check this before republishing them outside your own environment. [Desktop interaction evidence](docs/DASHBOARD_QA.md) records slicer, tooltip, navigation, drillthrough and Back-button checks.
+The account name in the Power BI Desktop window chrome has been masked in the screenshots. [Desktop interaction evidence](docs/DASHBOARD_QA.md) records slicer, tooltip, navigation, drillthrough and Back-button checks.
 
 ## Reproduce locally
 

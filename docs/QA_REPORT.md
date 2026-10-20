@@ -33,7 +33,7 @@ The sandbox initially blocked Python's default temporary directory and its ordin
 
 ## Dashboard and operational evidence
 
-The Task 11 Desktop QA in `docs/DASHBOARD_QA.md` records all six pages visually reviewed, then date slicer, tooltip, navigation, drillthrough and Back interactions checked by the user. At Task 13 the screenshots were local and uncommitted; Task 14 selected six final-page images for the local branch, with the visible account-name caveat recorded in the README. Task 12 fixture tests simulate idempotent refresh, a stale macro source, a provider failure with a secret-like string, and an independent Power BI refresh failure. Its scheduled workflow is committed but cannot run until it is pushed to GitHub and a persistent Windows runner, project-root variable and API secrets are configured.
+The Task 11 Desktop QA in `docs/DASHBOARD_QA.md` records all six pages visually reviewed, then date slicer, tooltip, navigation, drillthrough and Back interactions checked by the user. At Task 13 the screenshots were local and uncommitted; Task 14 selected six final-page images for the repository, with the account name in the window chrome masked. Task 12 fixture tests simulate idempotent refresh, a stale macro source, a provider failure with a secret-like string, and an independent Power BI refresh failure. Its scheduled workflow is committed but cannot run until it is pushed to GitHub and a persistent Windows runner, project-root variable and API secrets are configured.
 
 ## Remaining checks and limits
 
