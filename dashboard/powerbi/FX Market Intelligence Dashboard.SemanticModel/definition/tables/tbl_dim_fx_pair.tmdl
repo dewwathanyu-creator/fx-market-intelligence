@@ -36,3 +36,4 @@ table tbl_dim_fx_pair
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

@@ -34,6 +34,8 @@ table tbl_fact_fx_metrics
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column indexed_rate
 		dataType: double
 		lineageTag: 9d872995-94c6-4ac1-9975-17785613c160
@@ -145,3 +147,4 @@ table tbl_fact_fx_metrics
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

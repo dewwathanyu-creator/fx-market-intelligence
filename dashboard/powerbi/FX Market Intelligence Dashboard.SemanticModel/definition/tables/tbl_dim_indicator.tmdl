@@ -36,3 +36,4 @@ table tbl_dim_indicator
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

@@ -113,3 +113,4 @@ table LocalDateTable_507603f3-7ea2-4560-a03f-2d0b67e5fc1e
 		source = Calendar(Date(Year(MIN('tbl_fact_fx_rates'[retrieved_at])), 1, 1), Date(Year(MAX('tbl_fact_fx_rates'[retrieved_at])), 12, 31))
 
 	annotation __PBI_LocalDateTable = true
+

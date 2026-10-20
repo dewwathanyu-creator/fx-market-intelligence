@@ -1,6 +1,139 @@
 table tbl_fact_fx_rates
 	lineageTag: 169fee86-967e-4e9e-8dcc-d2ca1600e0df
 
+	measure 'Latest FX Rate' = IF(HASONEVALUE(tbl_fact_fx_rates[source_id]) && HASONEVALUE(tbl_fact_fx_rates[pair_id]) && HASONEVALUE(tbl_fact_fx_rates[rate_type]), CALCULATE(MAX(tbl_fact_fx_rates[rate]), tbl_fact_fx_rates[observation_date] = MAX(tbl_fact_fx_rates[observation_date])))
+		formatString: 0.0000
+		lineageTag: 59e9f854-b740-48bf-bd0a-ff43aa2d2998
+
+	measure 'Latest Observation Date' = IF(HASONEVALUE(tbl_fact_fx_rates[source_id]) && HASONEVALUE(tbl_fact_fx_rates[pair_id]) && HASONEVALUE(tbl_fact_fx_rates[rate_type]), MAX(tbl_fact_fx_rates[observation_date]))
+		formatString: yyyy-MM-dd
+		lineageTag: 8f4bbc0d-e7cc-4ea8-be8f-e30e5a916e7a
+
+	measure 'Latest Simple Return' = IF(HASONEVALUE(tbl_fact_fx_metrics[source_id]) && HASONEVALUE(tbl_fact_fx_metrics[pair_id]) && HASONEVALUE(tbl_fact_fx_metrics[rate_type]), CALCULATE(MAX(tbl_fact_fx_metrics[simple_return]), tbl_fact_fx_metrics[observation_date] = MAX(tbl_fact_fx_metrics[observation_date])))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3b2671bd-074c-4fd3-a104-53b9a8d99b6e
+
+	measure 'Latest 20D Volatility' = IF(HASONEVALUE(tbl_fact_fx_metrics[source_id]) && HASONEVALUE(tbl_fact_fx_metrics[pair_id]) && HASONEVALUE(tbl_fact_fx_metrics[rate_type]), CALCULATE(MAX(tbl_fact_fx_metrics[volatility_20]), tbl_fact_fx_metrics[observation_date] = MAX(tbl_fact_fx_metrics[observation_date])))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9bc6f14c-b515-4c7d-88c8-4f067a337144
+
+	measure 'Last Refresh' = MAX(tbl_refresh_metadata[last_success_at])
+		formatString: yyyy-MM-dd HH:mm
+		lineageTag: e1d7fb5a-3934-4d5a-a2e8-b041318fd056
+
+	measure 'Overview Rate' = CALCULATE([Latest FX Rate], KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: 0.0000
+		lineageTag: 94567f26-10b7-4d09-89ce-a580a066e759
+
+	measure 'Overview Return' = CALCULATE([Latest Simple Return], KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: +0.00%;-0.00%;0.00%
+		lineageTag: 3acc5bd6-abf3-41fb-9f1f-29865169becc
+
+	measure 'Overview Volatility' = CALCULATE([Latest 20D Volatility], KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: 0.0%
+		lineageTag: 09e89ed6-a5d0-484a-910a-b2a7ec0f52fc
+
+	measure 'Overview Observation Date' = CALCULATE([Latest Observation Date], KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: yyyy-MM-dd
+		lineageTag: 75d3d907-9cb2-4733-bf08-b7647bcb1b8e
+
+	measure 'Overview 60 Volatility' = CALCULATE(MAXX(TOPN(1, tbl_fact_fx_metrics, tbl_fact_fx_metrics[observation_date], DESC), tbl_fact_fx_metrics[volatility_60]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: 0.0%
+		lineageTag: 5fb25fec-4717-4043-937e-79929d63f39f
+
+	measure 'Overview Drawdown' = CALCULATE(MAXX(TOPN(1, tbl_fact_fx_metrics, tbl_fact_fx_metrics[observation_date], DESC), tbl_fact_fx_metrics[drawdown]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: beb63c44-9412-4f86-88cb-0049e86c4c41
+
+	measure 'Overview Volatility Trend' = CALCULATE(MAX(tbl_fact_fx_metrics[volatility_20]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: 0.0%
+		lineageTag: 8023579c-6867-4b52-adab-8e296cf1a4b7
+
+	measure 'Overview 60 Volatility Trend' = CALCULATE(MAX(tbl_fact_fx_metrics[volatility_60]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: 0.0%
+		lineageTag: 5df411b0-fdf4-4080-94f7-0e0936587a2b
+
+	measure 'Bank USD Latest' = CALCULATE([Latest FX Rate], KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: 0.0000
+		lineageTag: ce207c9d-c6ca-4473-8fe2-f30a16ec899a
+
+	measure 'Bank EUR Latest' = CALCULATE([Latest FX Rate], KEEPFILTERS(tbl_dim_source[source_id] = "bot_eurthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "EUR/THB"))
+		formatString: 0.0000
+		lineageTag: 770b312b-a5c4-4bb2-b464-33a7af4a250a
+
+	measure 'Bank USD Indexed' = CALCULATE(MAX(tbl_fact_fx_metrics[indexed_rate]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: 0.0
+		lineageTag: 83904f84-2af8-4da3-9af6-0ae71cb13e89
+
+	measure 'Bank EUR Indexed' = CALCULATE(MAX(tbl_fact_fx_metrics[indexed_rate]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_eurthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "EUR/THB"))
+		formatString: 0.0
+		lineageTag: cc46d19d-38ba-4063-9d0d-e2448013b602
+
+	measure 'Bank USD Period Move' = VAR FirstRate = CALCULATE(MAXX(TOPN(1, tbl_fact_fx_rates, tbl_fact_fx_rates[observation_date], ASC), tbl_fact_fx_rates[rate]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB")) VAR LastRate = [Bank USD Latest] RETURN IF(OR(ISBLANK(FirstRate), ISBLANK(LastRate)), BLANK(), DIVIDE(LastRate, FirstRate) - 1)
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 51d36c29-5fb7-46f1-b9a7-5a1bff7954db
+
+	measure 'Bank EUR Period Move' = VAR FirstRate = CALCULATE(MAXX(TOPN(1, tbl_fact_fx_rates, tbl_fact_fx_rates[observation_date], ASC), tbl_fact_fx_rates[rate]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_eurthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "EUR/THB")) VAR LastRate = [Bank EUR Latest] RETURN IF(OR(ISBLANK(FirstRate), ISBLANK(LastRate)), BLANK(), DIVIDE(LastRate, FirstRate) - 1)
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 3619ad4a-176b-4860-9782-2acddb011c2d
+
+	measure 'Selected Macro Value' = VAR Series = SELECTEDVALUE(tbl_dim_indicator[indicator_id], "DTWEXBGS") RETURN CALCULATE(MAX(tbl_fact_macro[value]), tbl_dim_indicator[indicator_id] = Series)
+		formatString: 0.00
+		lineageTag: 58adab88-763c-469e-896a-897028774ea0
+
+	measure 'Selected Macro Observation Date' = VAR Series = SELECTEDVALUE(tbl_dim_indicator[indicator_id], "DTWEXBGS") RETURN CALCULATE(MAX(tbl_fact_macro[observation_date]), tbl_dim_indicator[indicator_id] = Series)
+		formatString: yyyy-MM-dd
+		lineageTag: b7f10402-7ea3-4b4f-8653-8737a3a236be
+
+	measure 'Selected Macro Latest' = VAR ObservationDate = [Selected Macro Observation Date] RETURN CALCULATE([Selected Macro Value], tbl_fact_macro[observation_date] = ObservationDate)
+		formatString: 0.00
+		lineageTag: 2585ed5a-c1a7-4998-a15f-4a20f475c0b0
+
+	measure 'FX Row Count' = MAX(tbl_refresh_metadata[fx_row_count])
+		formatString: 0
+		lineageTag: fd847da0-3189-453c-8fce-411ca1e8a516
+
+	measure 'Macro Row Count' = MAX(tbl_refresh_metadata[macro_row_count])
+		formatString: 0
+		lineageTag: 515cf675-4452-4553-8d06-07ffea1c4bf7
+
+	measure 'Latest FX Observation Date' = MAX(tbl_fact_fx_rates[observation_date])
+		formatString: yyyy-MM-dd
+		lineageTag: 0203933a-55ee-4767-bbe9-54a04538b4de
+
+	measure 'Latest Macro Observation Date' = MAX(tbl_fact_macro[observation_date])
+		formatString: yyyy-MM-dd
+		lineageTag: 0b6d1365-9c2e-4a52-ab35-cde3468f36ca
+
+	measure 'Daily FX Observation Count' = COUNTROWS(tbl_fact_fx_rates)
+		formatString: 0
+		lineageTag: 695b8126-0997-4d79-8018-a55a17d81e91
+
+	measure 'Overview Start Date' = CALCULATE(MIN(tbl_fact_fx_rates[observation_date]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: yyyy-MM-dd
+		lineageTag: 479ce342-50cd-4249-bdbb-25c37b6d5dd3
+
+	measure 'Overview Start Rate' = CALCULATE(MAXX(TOPN(1, tbl_fact_fx_rates, tbl_fact_fx_rates[observation_date], ASC), tbl_fact_fx_rates[rate]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: 0.0000
+		lineageTag: da67a2a9-4b29-41aa-9951-655c8280d444
+
+	measure 'Overview Period Move' = VAR FirstRate = [Overview Start Rate] VAR LastRate = [Overview Rate] RETURN IF(OR(ISBLANK(FirstRate), ISBLANK(LastRate)), BLANK(), DIVIDE(LastRate, FirstRate) - 1)
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 50121adf-f983-430a-8f80-47d32e361f99
+
+	measure 'Selected Macro Series' = SELECTEDVALUE(tbl_dim_indicator[indicator_id], "DTWEXBGS")
+		lineageTag: 87a829f6-db18-4d8a-9b94-b27651446c1b
+
+	measure 'Selected Macro Unit' = VAR Series = [Selected Macro Series] RETURN LOOKUPVALUE(tbl_dim_indicator[unit], tbl_dim_indicator[indicator_id], Series)
+		lineageTag: 35f727bd-6ab9-4143-a519-72e29fa68628
+
+	measure 'Selected Macro Frequency' = VAR Series = [Selected Macro Series] RETURN LOOKUPVALUE(tbl_dim_indicator[frequency], tbl_dim_indicator[indicator_id], Series)
+		lineageTag: 2d4c8f0b-2096-4cd4-a6c8-87b4b150410b
+
+	measure 'Overview Metric Row Count' = CALCULATE(COUNTROWS(tbl_fact_fx_metrics), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
+		formatString: 0
+		lineageTag: 493238a1-99ae-4770-be2c-201f2c27062d
+
 	column source_id
 		dataType: string
 		lineageTag: eb340fe9-9a04-4c5c-a35d-4a2718e008b8
@@ -33,6 +166,8 @@ table tbl_fact_fx_rates
 		sourceColumn: observation_date
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column rate_type
 		dataType: string
@@ -82,105 +217,6 @@ table tbl_fact_fx_rates
 
 		annotation SummarizationSetBy = Automatic
 
-	measure 'Latest FX Rate' = IF(HASONEVALUE(tbl_fact_fx_rates[source_id]) && HASONEVALUE(tbl_fact_fx_rates[pair_id]) && HASONEVALUE(tbl_fact_fx_rates[rate_type]), CALCULATE(MAX(tbl_fact_fx_rates[rate]), tbl_fact_fx_rates[observation_date] = MAX(tbl_fact_fx_rates[observation_date])))
-		formatString: 0.0000
-
-	measure 'Latest Observation Date' = IF(HASONEVALUE(tbl_fact_fx_rates[source_id]) && HASONEVALUE(tbl_fact_fx_rates[pair_id]) && HASONEVALUE(tbl_fact_fx_rates[rate_type]), MAX(tbl_fact_fx_rates[observation_date]))
-		formatString: yyyy-MM-dd
-
-	measure 'Latest Simple Return' = IF(HASONEVALUE(tbl_fact_fx_metrics[source_id]) && HASONEVALUE(tbl_fact_fx_metrics[pair_id]) && HASONEVALUE(tbl_fact_fx_metrics[rate_type]), CALCULATE(MAX(tbl_fact_fx_metrics[simple_return]), tbl_fact_fx_metrics[observation_date] = MAX(tbl_fact_fx_metrics[observation_date])))
-		formatString: 0.00%;-0.00%;0.00%
-
-	measure 'Latest 20D Volatility' = IF(HASONEVALUE(tbl_fact_fx_metrics[source_id]) && HASONEVALUE(tbl_fact_fx_metrics[pair_id]) && HASONEVALUE(tbl_fact_fx_metrics[rate_type]), CALCULATE(MAX(tbl_fact_fx_metrics[volatility_20]), tbl_fact_fx_metrics[observation_date] = MAX(tbl_fact_fx_metrics[observation_date])))
-		formatString: 0.00%;-0.00%;0.00%
-
-	measure 'Last Refresh' = MAX(tbl_refresh_metadata[last_success_at])
-		formatString: yyyy-MM-dd HH:mm
-
-	measure 'Overview Rate' = CALCULATE([Latest FX Rate], KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: 0.0000
-
-	measure 'Overview Return' = CALCULATE([Latest Simple Return], KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: +0.00%;-0.00%;0.00%
-
-	measure 'Overview Volatility' = CALCULATE([Latest 20D Volatility], KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: 0.0%
-
-	measure 'Overview Observation Date' = CALCULATE([Latest Observation Date], KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: yyyy-MM-dd
-
-	measure 'Overview Start Date' = CALCULATE(MIN(tbl_fact_fx_rates[observation_date]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: yyyy-MM-dd
-
-	measure 'Overview Start Rate' = CALCULATE(MAXX(TOPN(1, tbl_fact_fx_rates, tbl_fact_fx_rates[observation_date], ASC), tbl_fact_fx_rates[rate]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: 0.0000
-
-	measure 'Overview Period Move' = VAR FirstRate = [Overview Start Rate] VAR LastRate = [Overview Rate] RETURN IF(OR(ISBLANK(FirstRate), ISBLANK(LastRate)), BLANK(), DIVIDE(LastRate, FirstRate) - 1)
-		formatString: +0.0%;-0.0%;0.0%
-
-	measure 'Overview 60 Volatility' = CALCULATE(MAXX(TOPN(1, tbl_fact_fx_metrics, tbl_fact_fx_metrics[observation_date], DESC), tbl_fact_fx_metrics[volatility_60]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: 0.0%
-
-	measure 'Overview Drawdown' = CALCULATE(MAXX(TOPN(1, tbl_fact_fx_metrics, tbl_fact_fx_metrics[observation_date], DESC), tbl_fact_fx_metrics[drawdown]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: 0.0%;-0.0%;0.0%
-
-	measure 'Overview Volatility Trend' = CALCULATE(MAX(tbl_fact_fx_metrics[volatility_20]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: 0.0%
-
-	measure 'Overview 60 Volatility Trend' = CALCULATE(MAX(tbl_fact_fx_metrics[volatility_60]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: 0.0%
-
-	measure 'Bank USD Latest' = CALCULATE([Latest FX Rate], KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: 0.0000
-
-	measure 'Bank EUR Latest' = CALCULATE([Latest FX Rate], KEEPFILTERS(tbl_dim_source[source_id] = "bot_eurthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "EUR/THB"))
-		formatString: 0.0000
-
-	measure 'Bank USD Indexed' = CALCULATE(MAX(tbl_fact_fx_metrics[indexed_rate]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: 0.0
-
-	measure 'Bank EUR Indexed' = CALCULATE(MAX(tbl_fact_fx_metrics[indexed_rate]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_eurthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "EUR/THB"))
-		formatString: 0.0
-
-	measure 'Bank USD Period Move' = VAR FirstRate = CALCULATE(MAXX(TOPN(1, tbl_fact_fx_rates, tbl_fact_fx_rates[observation_date], ASC), tbl_fact_fx_rates[rate]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB")) VAR LastRate = [Bank USD Latest] RETURN IF(OR(ISBLANK(FirstRate), ISBLANK(LastRate)), BLANK(), DIVIDE(LastRate, FirstRate) - 1)
-		formatString: +0.0%;-0.0%;0.0%
-
-	measure 'Bank EUR Period Move' = VAR FirstRate = CALCULATE(MAXX(TOPN(1, tbl_fact_fx_rates, tbl_fact_fx_rates[observation_date], ASC), tbl_fact_fx_rates[rate]), KEEPFILTERS(tbl_dim_source[source_id] = "bot_eurthb_bank_average"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "EUR/THB")) VAR LastRate = [Bank EUR Latest] RETURN IF(OR(ISBLANK(FirstRate), ISBLANK(LastRate)), BLANK(), DIVIDE(LastRate, FirstRate) - 1)
-		formatString: +0.0%;-0.0%;0.0%
-
-	measure 'Selected Macro Value' = VAR Series = SELECTEDVALUE(tbl_dim_indicator[indicator_id], "DTWEXBGS") RETURN CALCULATE(MAX(tbl_fact_macro[value]), tbl_dim_indicator[indicator_id] = Series)
-		formatString: 0.00
-
-	measure 'Selected Macro Series' = SELECTEDVALUE(tbl_dim_indicator[indicator_id], "DTWEXBGS")
-
-	measure 'Selected Macro Unit' = VAR Series = [Selected Macro Series] RETURN LOOKUPVALUE(tbl_dim_indicator[unit], tbl_dim_indicator[indicator_id], Series)
-
-	measure 'Selected Macro Frequency' = VAR Series = [Selected Macro Series] RETURN LOOKUPVALUE(tbl_dim_indicator[frequency], tbl_dim_indicator[indicator_id], Series)
-
-	measure 'Selected Macro Observation Date' = VAR Series = SELECTEDVALUE(tbl_dim_indicator[indicator_id], "DTWEXBGS") RETURN CALCULATE(MAX(tbl_fact_macro[observation_date]), tbl_dim_indicator[indicator_id] = Series)
-		formatString: yyyy-MM-dd
-
-	measure 'Selected Macro Latest' = VAR ObservationDate = [Selected Macro Observation Date] RETURN CALCULATE([Selected Macro Value], tbl_fact_macro[observation_date] = ObservationDate)
-		formatString: 0.00
-
-	measure 'FX Row Count' = MAX(tbl_refresh_metadata[fx_row_count])
-		formatString: 0
-
-	measure 'Macro Row Count' = MAX(tbl_refresh_metadata[macro_row_count])
-		formatString: 0
-
-	measure 'Latest FX Observation Date' = MAX(tbl_fact_fx_rates[observation_date])
-		formatString: yyyy-MM-dd
-
-	measure 'Latest Macro Observation Date' = MAX(tbl_fact_macro[observation_date])
-		formatString: yyyy-MM-dd
-
-	measure 'Daily FX Observation Count' = COUNTROWS(tbl_fact_fx_rates)
-		formatString: 0
-
-	measure 'Overview Metric Row Count' = CALCULATE(COUNTROWS(tbl_fact_fx_metrics), KEEPFILTERS(tbl_dim_source[source_id] = "bot_usdthb_interbank"), KEEPFILTERS(tbl_dim_fx_pair[pair_id] = "USD/THB"))
-		formatString: 0
-
 	partition tbl_fact_fx_rates = m
 		mode: import
 		source =
@@ -192,3 +228,4 @@ table tbl_fact_fx_rates
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

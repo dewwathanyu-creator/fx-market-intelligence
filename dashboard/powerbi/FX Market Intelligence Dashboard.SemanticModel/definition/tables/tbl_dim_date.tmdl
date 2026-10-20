@@ -8,7 +8,14 @@ table tbl_dim_date
 		summarizeBy: none
 		sourceColumn: date_key
 
+		variation Variation
+			isDefault
+			relationship: 072c0777-9363-4f40-999d-27e8ae725011
+			defaultHierarchy: LocalDateTable_9cd948fe-f6de-4dda-a85c-1244f4c9572e.'Date Hierarchy'
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column year
 		dataType: int64
@@ -56,3 +63,4 @@ table tbl_dim_date
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

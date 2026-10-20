@@ -26,6 +26,8 @@ table tbl_fact_macro
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column vintage_date
 		dataType: dateTime
 		formatString: yyyy-MM-dd
@@ -33,7 +35,14 @@ table tbl_fact_macro
 		summarizeBy: none
 		sourceColumn: vintage_date
 
+		variation Variation
+			isDefault
+			relationship: 8b0bf6ee-9851-4d85-a8ef-4ee8ee62fa07
+			defaultHierarchy: LocalDateTable_6b97aa96-ea24-4e9d-98ef-6bd3c1abb9b0.'Date Hierarchy'
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column release_date
 		dataType: dateTime
@@ -42,7 +51,14 @@ table tbl_fact_macro
 		summarizeBy: none
 		sourceColumn: release_date
 
+		variation Variation
+			isDefault
+			relationship: 65b24732-be7b-4076-8792-c4fa742a135e
+			defaultHierarchy: LocalDateTable_f21d8e8b-9ad7-481c-82b1-948ddfacd1fe.'Date Hierarchy'
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column value
 		dataType: double
@@ -95,3 +111,4 @@ table tbl_fact_macro
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

@@ -28,3 +28,4 @@ table tbl_dim_currency
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

@@ -26,5 +26,9 @@ ref table tbl_refresh_metadata
 ref table LocalDateTable_818dd6e7-3fda-4430-8aca-de60674ae5d5
 ref table tbl_fact_macro
 ref table LocalDateTable_567641cd-2fd9-4781-8279-c556341de564
+ref table LocalDateTable_9cd948fe-f6de-4dda-a85c-1244f4c9572e
+ref table LocalDateTable_6b97aa96-ea24-4e9d-98ef-6bd3c1abb9b0
+ref table LocalDateTable_f21d8e8b-9ad7-481c-82b1-948ddfacd1fe
 
 ref cultureInfo en-US
+
