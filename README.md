@@ -4,7 +4,7 @@ An analytics pipeline and six-page Power BI report built on official Bank of Tha
 
 **Tools:** Python (pandas, NumPy, Pandera) · DuckDB (SQL) · Power BI (DAX) · pytest · Ruff · GitHub Actions
 **Data:** [BOT Exchange Rates API](https://portal.api.bot.or.th/portal/catalogue-products/exchange-rates-1) and [FRED](https://fred.stlouisfed.org/docs/api/fred/series_observations.html) (local snapshot, 5 January to 30 September 2026)
-**Report:** [Power BI project](dashboard/powerbi/FX%20Market%20Intelligence%20Dashboard.pbip) · [Thai user guide](docs/USER_GUIDE_TH.md)
+**Report:** [Power BI project](dashboard/powerbi/FX%20Market%20Intelligence%20Dashboard.pbip) · [User guide](docs/USER_GUIDE.md)
 
 ## Table of Contents
 
@@ -142,8 +142,7 @@ The [USD/THB case study](docs/CASE_STUDY.md) reproduces the endpoint comparison 
 ├── sql/                              staging schema, marts, reconciliation queries
 ├── dashboard/
 │   ├── powerbi/                      PBIP report and semantic model
-│   ├── screenshots/final/            six page screenshots used above
-│   └── mockups/                      design mockups
+│   └── screenshots/final/            six page screenshots used above
 ├── docs/                             architecture, methodology, data dictionary, QA, runbook
 ├── reports/                          macro research protocol, project summary
 ├── tests/                            unit, integration and fixtures

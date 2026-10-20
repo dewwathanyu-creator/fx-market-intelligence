@@ -1,4 +1,16 @@
-# FX refresh runbook — Task 12
+# FX Refresh Runbook
+
+Operating procedures for the scheduled FX refresh: what it updates, how to read its status and how to recover from a failure.
+
+## Table of Contents
+
+- [Operating model](#operating-model)
+- [First setup](#first-setup)
+- [Manual refresh and recovery](#manual-refresh-and-recovery)
+- [Separate Power BI refresh](#separate-power-bi-refresh)
+- [Safety notes](#safety-notes)
+
+---
 
 ## Operating model
 

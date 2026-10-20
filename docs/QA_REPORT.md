@@ -1,4 +1,15 @@
-# Task 13 — End-to-end quality assurance
+# End-to-End Quality Assurance
+
+Results of the offline end-to-end checks, the clean-install verification and the remaining limits of the quality gate.
+
+## Table of Contents
+
+- [Reproducible sample path](#reproducible-sample-path)
+- [Clean Python 3.13 check](#clean-python-313-check)
+- [Dashboard and operational evidence](#dashboard-and-operational-evidence)
+- [Remaining checks and limits](#remaining-checks-and-limits)
+
+---
 
 Date: 17 October 2026 (Asia/Bangkok). Scope: offline sample path, package installation, regression suite and documented Desktop evidence. This report does not claim a new live BOT/FRED fetch or a Power BI service refresh.
 
@@ -29,11 +40,11 @@ python -m ruff format --check .                  -> 74 files already formatted
 git diff --check                                 -> passed
 ```
 
-The sandbox initially blocked Python's default temporary directory and its ordinary network route. A writable temporary directory enabled `ensurepip`; the approved dependency download route completed the isolated installation. Those environment restrictions were resolved for this check. The virtual environment is temporary and is not part of the repository.
+The virtual environment used for this check was temporary and is not part of the repository.
 
 ## Dashboard and operational evidence
 
-The Task 11 Desktop QA in `docs/DASHBOARD_QA.md` records all six pages visually reviewed, then date slicer, tooltip, navigation, drillthrough and Back interactions checked by the user. At Task 13 the screenshots were local and uncommitted; Task 14 selected six final-page images for the repository, with the account name in the window chrome masked. Task 12 fixture tests simulate idempotent refresh, a stale macro source, a provider failure with a secret-like string, and an independent Power BI refresh failure. Its scheduled workflow is committed but cannot run until it is pushed to GitHub and a persistent Windows runner, project-root variable and API secrets are configured.
+The Desktop QA in `docs/DASHBOARD_QA.md` records all six pages visually reviewed, then date slicer, tooltip, navigation, drillthrough and Back interactions checked in Desktop. Six final-page screenshots are in the repository, with the account name in the window chrome masked. Fixture tests for the refresh workflow simulate idempotent refresh, a stale macro source, a provider failure with a secret-like string, and an independent Power BI refresh failure. Its scheduled workflow is committed but cannot run until it is pushed to GitHub and a persistent Windows runner, project-root variable and API secrets are configured.
 
 ## Remaining checks and limits
 
@@ -41,4 +52,3 @@ The Task 11 Desktop QA in `docs/DASHBOARD_QA.md` records all six pages visually 
 - No Power BI service publication or service refresh was attempted. Desktop screenshots confirm rendering and interaction; they do not certify service behavior.
 - The fixture covers short daily histories and one FRED series. It cannot benchmark large datasets or every provider schema variant.
 - Release dates missing from FRED observations stay unknown. This project does not make a causal or historical release-aware claim from observation dates alone.
-- The README was subsequently updated in Task 14 with the delivered project state and reproduction path.

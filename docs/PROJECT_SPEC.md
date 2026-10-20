@@ -1,4 +1,19 @@
-# FX Market Intelligence Dashboard — Project specification
+# Project Specification
+
+Purpose, scope, data-source policy, financial methodology and deliverables of the FX Market Intelligence project.
+
+## Table of Contents
+
+- [Purpose](#purpose)
+- [Business questions](#business-questions)
+- [Scope and release order](#scope-and-release-order)
+- [Data source policy](#data-source-policy)
+- [Financial methodology](#financial-methodology)
+- [Dashboard requirements](#dashboard-requirements)
+- [End deliverables](#end-deliverables)
+- [Quality and risk gates](#quality-and-risk-gates)
+
+---
 
 ## Purpose
 
@@ -20,7 +35,7 @@ Create an auditable, reproducible FX market intelligence platform. It should tur
 | Advanced | Rolling correlation; rate differentials; official NEER/REER analysis; exploratory macro regimes; FX exposure scenarios. |
 | Future | Forecasting/ML; generated commentary; intraday monitoring. |
 
-MVP excludes automated trading, claims of guaranteed forecasts, tick data, arbitrage execution, and derivatives pricing. Prioritize Tasks 01–08 as a sound data and analytics base. Start Power BI after Task 08; Task 09 adds macro research before the full report is delivered.
+MVP excludes automated trading, claims of guaranteed forecasts, tick data, arbitrage execution, and derivatives pricing. Prioritize Work packages 01–08 as a sound data and analytics base. Start Power BI after Work package 08; Work package 09 adds macro research before the full report is delivered.
 
 ## Data source policy
 
@@ -32,7 +47,7 @@ MVP excludes automated trading, claims of guaranteed forecasts, tick data, arbit
 | P1 | BIS | Effective exchange-rate indices | Use published frequency and methodology. |
 | P1 | BOT economic statistics | Thai CPI, interest rates, NEER/REER | Monthly or provider-specific. |
 
-Official discovery pages: [BOT exchange rates](https://portal.api.bot.or.th/portal/catalogue-products/exchange-rates-1), [FRED API](https://fred.stlouisfed.org/docs/api/fred/), [ECB API](https://data.ecb.europa.eu/help/api/overview), and [BIS EER](https://data.bis.org/topics/EER). These are intended sources; Task 02 must verify live access, licensing, exact series IDs, historical coverage, and provider rules before ingestion. Target history begins in 2015 only where a series actually supports it. FX refreshes daily; macro refreshes on its true release cadence. Store credentials in environment variables, respect rate limits, and use retry/backoff and incremental fetch. Keep missing raw observations missing.
+Official discovery pages: [BOT exchange rates](https://portal.api.bot.or.th/portal/catalogue-products/exchange-rates-1), [FRED API](https://fred.stlouisfed.org/docs/api/fred/), [ECB API](https://data.ecb.europa.eu/help/api/overview), and [BIS EER](https://data.bis.org/topics/EER). These are intended sources; Work package 02 must verify live access, licensing, exact series IDs, historical coverage, and provider rules before ingestion. Target history begins in 2015 only where a series actually supports it. FX refreshes daily; macro refreshes on its true release cadence. Store credentials in environment variables, respect rate limits, and use retry/backoff and incremental fetch. Keep missing raw observations missing.
 
 ## Financial methodology
 
@@ -53,7 +68,7 @@ Macro analysis may use Pearson/Spearman and rolling correlation, lag analysis, r
 | 05 Thailand FX Monitor | How does THB compare broadly? | USD/THB and official NEER/REER. |
 | 06 Data Quality & Research | How trustworthy and interpretable are results? | Data health and sourced research notes. |
 
-Provide currency, date range, frequency, and macro indicator slicers. Each page displays data source, observation date, and last refresh. Numbers in mockups are illustrative, never current market facts.
+Provide currency, date range, frequency, and macro indicator slicers. Each page displays data source, observation date, and last refresh.
 
 ## End deliverables
 

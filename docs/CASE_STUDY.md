@@ -1,5 +1,15 @@
 # USD/THB research case: January–September 2026 quote depreciation
 
+A descriptive comparison of USD/THB and EUR/THB quotes between the first and last common observations in the 2026 local snapshot, with a reproducible query and stated limits.
+
+## Table of Contents
+
+- [Question and evidence](#question-and-evidence)
+- [Reproduce the numbers](#reproduce-the-numbers)
+- [What this does not establish](#what-this-does-not-establish)
+
+---
+
 ## Question and evidence
 
 How did the THB-per-USD reference quote change between the first and last common BOT observations in the local 2026 snapshot, and was the direction also visible in comparable customer bank-average USD and EUR quotes? This is a **descriptive period comparison**, not an explanation of the move or a trading signal.

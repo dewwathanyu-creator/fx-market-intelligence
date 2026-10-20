@@ -1,4 +1,12 @@
-# MVP source registry and data dictionary
+# Source Registry and Data Dictionary
+
+The series, providers, units and quote conventions held in the registry, with the coverage of the local snapshot.
+
+## Table of Contents
+
+- [Local snapshot](#local-snapshot)
+
+---
 
 The machine-readable series contract is in config/sources/registry.yaml. Provider routes and FRED IDs were checked against official documentation in October 2026. A local credentialed collection populated the October 2026 local snapshot described below; this does not establish every series' full historical coverage. A target start in 2015 is not a claim that every series has observations that far back.
 

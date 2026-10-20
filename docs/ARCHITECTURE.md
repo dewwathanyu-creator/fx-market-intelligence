@@ -1,4 +1,17 @@
-# FX Market Intelligence Dashboard — Architecture
+# FX Market Intelligence Dashboard: Architecture
+
+The logical flow, repository layout, data contracts and component boundaries of the FX pipeline, from source adapters to the Power BI semantic model.
+
+## Table of Contents
+
+- [Logical flow](#logical-flow)
+- [Delivered implementation](#delivered-implementation)
+- [Repository target](#repository-target)
+- [Data contracts and grain](#data-contracts-and-grain)
+- [Component boundaries](#component-boundaries)
+- [Technology decisions](#technology-decisions)
+
+---
 
 ## Logical flow
 
@@ -23,7 +36,7 @@ BOT / FRED (P0) + ECB / BIS / BOT statistics (P1)
             reports and research
 ```
 
-Raw data remains auditable. A failed validation records a quality issue and does not silently enter an analytics mart. Collection, transformation, analytical computation, and BI refresh are independently rerunnable. The local warehouse uses DuckDB; the incremental schedule is defined in Task 12 and requires separate activation.
+Raw data remains auditable. A failed validation records a quality issue and does not silently enter an analytics mart. Collection, transformation, analytical computation, and BI refresh are independently rerunnable. The local warehouse uses DuckDB; the incremental schedule is defined in Work package 12 and requires separate activation.
 
 ## Delivered implementation
 
@@ -32,37 +45,37 @@ The repository now has BOT and FRED collectors, canonical validation and quarant
 ## Repository target
 
 ```text
-README.md                         # Task 01: setup and project entry point
-pyproject.toml                    # Task 01: Python/dependency/tool configuration
-.env.example                      # Task 01: names only, never secrets
-.github/workflows/                # Task 01 CI; Task 12 scheduling
-config/sources/                   # Task 02 source registry
-config/indicators/                # Task 02 financial metadata
-config/validation/                # Task 04 validation policy
-data/raw/                         # Task 03 local raw outputs (ignored)
-data/processed/                   # Task 05 outputs (ignored)
+README.md                         # Work package 01: setup and project entry point
+pyproject.toml                    # Work package 01: Python/dependency/tool configuration
+.env.example                      # Work package 01: names only, never secrets
+.github/workflows/                # Work package 01 CI; Work package 12 scheduling
+config/sources/                   # Work package 02 source registry
+config/indicators/                # Work package 02 financial metadata
+config/validation/                # Work package 04 validation policy
+data/raw/                         # Work package 03 local raw outputs (ignored)
+data/processed/                   # Work package 05 outputs (ignored)
 data/sample/                      # Small, licensed/anonymized test examples
-src/fx_intelligence/ingestion/    # Task 03
-src/fx_intelligence/schemas/      # Task 04
-src/fx_intelligence/validation/   # Task 04
-src/fx_intelligence/transformation/ # Task 05
-src/fx_intelligence/warehouse/    # Task 06
-src/fx_intelligence/analytics/    # Tasks 07–09
-src/fx_intelligence/orchestration/ # Task 12
-sql/staging/                      # Task 06
-sql/marts/                        # Task 06
-sql/validation/                   # Tasks 06, 13
-dashboard/powerbi/               # Tasks 10–11
-dashboard/screenshots/            # Task 14
-notebooks/                       # Task 09 exploratory work
-reports/                         # Tasks 09, 14
+src/fx_intelligence/ingestion/    # Work package 03
+src/fx_intelligence/schemas/      # Work package 04
+src/fx_intelligence/validation/   # Work package 04
+src/fx_intelligence/transformation/ # Work package 05
+src/fx_intelligence/warehouse/    # Work package 06
+src/fx_intelligence/analytics/    # Work packages 07–09
+src/fx_intelligence/orchestration/ # Work package 12
+sql/staging/                      # Work package 06
+sql/marts/                        # Work package 06
+sql/validation/                   # Work packages 06, 13
+dashboard/powerbi/               # Work packages 10–11
+dashboard/screenshots/            # Work package 14
+notebooks/                       # Work package 09 exploratory work
+reports/                         # Work packages 09, 14
 docs/                            # Specification and methods
 tests/unit/                      # Deterministic behavior tests
 tests/integration/               # Pipeline tests with fixtures
 tests/fixtures/                  # Small controlled examples
 ```
 
-Create directories only when their task needs them. Task 01 creates the minimum package, test, CI, and documentation foundation; it does not scaffold empty future subsystems merely to match this diagram.
+Create directories only when their task needs them. Work package 01 creates the minimum package, test, CI, and documentation foundation; it does not scaffold empty future subsystems merely to match this diagram.
 
 ## Data contracts and grain
 
@@ -78,7 +91,7 @@ Create directories only when their task needs them. Task 01 creates the minimum 
 | `fact_fx_analytics` | pair × date × metric × window | metric value, method/version, source lineage |
 | `etl_run_log` | one pipeline run | status, counts, timestamps, errors |
 
-These are target contracts for Tasks 02–06, not tables to implement during Task 01. Define unique keys explicitly when implementing each fact. Keep published observation dates separate from timestamps at which information became available; never infer release date from observation date. Do not join monthly macro observations to daily FX rows on equal date alone.
+These are target contracts for Work packages 02–06, not tables to implement during Work package 01. Define unique keys explicitly when implementing each fact. Keep published observation dates separate from timestamps at which information became available; never infer release date from observation date. Do not join monthly macro observations to daily FX rows on equal date alone.
 
 ## Component boundaries
 

@@ -1,4 +1,15 @@
-# Power BI semantic model
+# Power BI Semantic Model
+
+How to open and refresh the Power BI project locally, and how its tables, measures and parity checks are organised.
+
+## Table of Contents
+
+- [Open and refresh locally](#open-and-refresh-locally)
+- [Tables and grain](#tables-and-grain)
+- [Measures and filters](#measures-and-filters)
+- [Parity and limits](#parity-and-limits)
+
+---
 
 ## Open and refresh locally
 

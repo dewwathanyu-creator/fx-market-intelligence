@@ -1,6 +1,14 @@
-# FX performance methodology
+# FX Performance Methodology
 
-Task 07 computes directed FX performance from validated observations. A quote is expressed as quote-currency units per one base-currency unit. For USD/THB, a positive return means USD strengthened against THB (THB weakened). To measure THB against USD, invert the quote before calculating returns.
+Definitions of returns, indexed performance, volatility and drawdown used by the analytics package and the report.
+
+## Table of Contents
+
+- [FX risk statistics](#fx-risk-statistics)
+
+---
+
+This page defines how directed FX performance is computed from validated observations. A quote is expressed as quote-currency units per one base-currency unit. For USD/THB, a positive return means USD strengthened against THB (THB weakened). To measure THB against USD, invert the quote before calculating returns.
 
 - Simple return: `S_t / S_(t-1) - 1`.
 - Log return: `ln(S_t / S_(t-1))`. Log output is a floating-point value; simple returns and indexed values use `Decimal`.

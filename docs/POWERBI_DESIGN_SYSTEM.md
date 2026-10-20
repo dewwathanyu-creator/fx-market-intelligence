@@ -1,6 +1,17 @@
-# Power BI visual system
+# Power BI Visual System
 
-This is the working style for the six-page FX Market Intelligence Desktop report. It preserves the user's navy and blue direction and prioritizes fast interpretation over decorative detail. The editable source is `dashboard/powerbi/build_report.py`; regenerated PBIR files and the report theme travel with it.
+The visual hierarchy, tokens and interpretation guardrails applied to the six report pages.
+
+## Table of Contents
+
+- [Visual hierarchy](#visual-hierarchy)
+- [Tokens and reading checks](#tokens-and-reading-checks)
+- [FX interpretation guardrails](#fx-interpretation-guardrails)
+- [Review checklist](#review-checklist)
+
+---
+
+This is the working style for the six-page FX Market Intelligence Desktop report. It keeps a navy and blue direction and prioritizes fast interpretation over decorative detail. The editable source is `dashboard/powerbi/build_report.py`; regenerated PBIR files and the report theme travel with it.
 
 ## Visual hierarchy
 
@@ -22,7 +33,7 @@ This is the working style for the six-page FX Market Intelligence Desktop report
 | Primary line | `#1670D5` | First chart series |
 | Comparison line | `#B85B00` | Second chart series; distinct from primary blue |
 
-Segoe UI is the default. Page titles use 31 px in the 1440 × 900 PBIR canvas, subtitle 16 px, navigation 15 px, authored chart titles 19 px, card labels 14 px and footer labels 12 px. Inspect the report at the user's normal Desktop zoom; these source-pixel sizes do not guarantee the rendered result. Keep chart axes and table labels readable, avoid clipped cells, and use text to identify series and quote direction. Microsoft's [Power BI accessibility guidance](https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-accessibility-creating-reports) calls for consistent titles, legible labels and adequate contrast.
+Segoe UI is the default. Page titles use 31 px in the 1440 × 900 PBIR canvas, subtitle 16 px, navigation 15 px, authored chart titles 19 px, card labels 14 px and footer labels 12 px. Inspect the report at a normal Desktop zoom; these source-pixel sizes do not guarantee the rendered result. Keep chart axes and table labels readable, avoid clipped cells, and use text to identify series and quote direction. Microsoft's [Power BI accessibility guidance](https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-accessibility-creating-reports) calls for consistent titles, legible labels and adequate contrast.
 
 ## FX interpretation guardrails
 
